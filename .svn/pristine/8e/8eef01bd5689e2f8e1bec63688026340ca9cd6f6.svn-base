@@ -1,0 +1,131 @@
+package es.bd;
+
+import es.cli.Gestor;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import es.cli.Utilizador;
+
+/**
+ *
+ * @author Douglas
+ */
+public class BaseDeDados {
+
+    /*
+     * Variáveis de sistema
+     * caminho contém o caminho da base de dados
+     * listUtilizadores contém a lista de utilizadores registados no sistema
+     * atual contém o utilizador ativo que realizou o login
+     * 
+     */
+    List<Utilizador> listUtilizadores;
+    Utilizador atual;
+    private String caminho;
+
+    //Cria um objeto BaseDeDados
+    public BaseDeDados() {
+        listUtilizadores = new ArrayList<>();
+        caminho = "C:\\dados\\dados.txt";
+    }
+
+    /* Esta função verifica se existe um arquivo no diretório indicado 
+     * no construtor do objeto, se existir, o sistema faz a leitura dos dados, 
+     * se não existir, o sistema cria uma nova base de dados com um novo utilizador
+     * admin
+     */
+    public void testeBanco() {
+        try {
+            File f = new File(caminho);
+            f = new File(f.getParent());
+            f.mkdir();
+            f = new File(caminho);
+            if (!f.exists()) {
+                //JOptionPane.showMessageDialog(null, "Não foi encontrado banco de dados anteriores.\n"
+                //        + "será criado um novo banco em C:/dados/", "Erro", 1);
+                Gestor g = new Gestor(1, true, "admin", "admin", "Administrador", "", new Date(2012, 01, 01),
+                        "admin@admin.com.br", "", "", "", "", "Portugal");
+                addUtilizador(g);
+                Serializar();
+            } else {
+                desSerializar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Um erro ocorreu ao tentar executar essa operação",
+                    "Erro", 0);
+        }
+    }
+
+    /*
+     * Esta função faz a escrita dos objetos na base de dados
+     */
+    public void Serializar() {
+        try {
+            FileOutputStream arquivoGrav = new FileOutputStream(caminho, false);
+            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
+            //objGravar.writeObject(objetos);
+            objGravar.writeObject(listUtilizadores);
+            objGravar.flush();
+            objGravar.close();
+            arquivoGrav.flush();
+            arquivoGrav.close();
+            System.out.println("Arquivo salvo com sucesso");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Um erro ocorreu ao tentar salvar no banco\n\nERRO: " + e.getMessage(),
+                    "Erro", 0);
+            System.exit(0);
+        }
+    }
+
+    /*
+     * Esta função faz a leitura dos objetos na base de dados
+     */
+    public void desSerializar() {
+        try {
+            FileInputStream arquivoLeitura = new FileInputStream(caminho);
+            ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
+            //objetos = (List) objLeitura.readObject();
+            listUtilizadores = (List) objLeitura.readObject();
+            objLeitura.close();
+            arquivoLeitura.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Um erro ocorreu ao tentar carregar os dados do banco",
+                    "Erro", 0);
+        }
+    }
+
+    /*
+     * Esta função faz a validação do login, 
+     * verifica se o utilizador existe e se a password indicada confere
+     * com a password na base de dados
+     */
+    public boolean checkExists(String user, String pass) {
+        for (int i = 0; i < listUtilizadores.size(); i++) {
+            es.cli.Utilizador util = (es.cli.Utilizador) listUtilizadores.get(i);
+            if (util.getUsername().equals(user) && util.getPassword().equals(pass)) {
+                atual = util;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /*
+     * Esta função adiciona o novo utilizador na base de dados e escreve os dados 
+     * na base de dados
+     */
+    public void addUtilizador(Utilizador u) {
+        listUtilizadores.add(u);
+        Serializar();
+    }
+    
+    /*
+     * Essa função retorna o utilizador atual que está com o login ativo no sistema
+     */
+    public Utilizador getAtual(){
+        return atual;
+    }
+}

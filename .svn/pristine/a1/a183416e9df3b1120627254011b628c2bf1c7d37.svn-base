@@ -1,0 +1,3 @@
+path = ./BD
+server = localhost
+portnumber = 40000

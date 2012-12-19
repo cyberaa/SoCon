@@ -1,0 +1,94 @@
+package es.bd;
+
+import es.cli.Gestor;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import es.cli.Utilizador;
+
+/**
+ *
+ * @author Douglas
+ */
+public class BaseDeDados {
+
+    String path;
+    List<Utilizador> listUtilizadores;
+    private String caminho;
+
+    public BaseDeDados() {
+        listUtilizadores = new ArrayList<>();
+        caminho = "C:\\dados\\dados.txt";
+    }
+
+    public void testeBanco() {
+        try {
+            File f = new File(caminho);
+            f = new File(f.getParent());
+            f.mkdir();
+            f = new File(caminho);
+            if (!f.exists()) {
+                JOptionPane.showMessageDialog(null, "Não foi encontrado banco de dados anteriores.\n"
+                        + "será criado um novo banco em C:/dados/", "Erro", 1);
+                Gestor g = new Gestor(1, true, "admin", "admin", "Administrador", "", new Date(2012, 01, 01),
+                        "admin@admin.com.br", "", "", "", "", "Portugal");
+                addUtilizador(g);
+                Serializar();
+            } else {
+                desSerializar();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Um erro ocorreu ao tentar executar essa operação",
+                    "Erro", 0);
+        }
+    }
+
+    public void Serializar() {
+        try {
+            FileOutputStream arquivoGrav = new FileOutputStream(caminho, false);
+            ObjectOutputStream objGravar = new ObjectOutputStream(arquivoGrav);
+            //objGravar.writeObject(objetos);
+            objGravar.writeObject(listUtilizadores);
+            objGravar.flush();
+            objGravar.close();
+            arquivoGrav.flush();
+            arquivoGrav.close();
+            System.out.println("Arquivo salvo com sucesso");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null, "Um erro ocorreu ao tentar salvar no banco\n\nERRO: " + e.getMessage(),
+                    "Erro", 0);
+            System.exit(0);
+        }
+    }
+
+    public void desSerializar() {
+        try {
+            FileInputStream arquivoLeitura = new FileInputStream(caminho);
+            ObjectInputStream objLeitura = new ObjectInputStream(arquivoLeitura);
+            //objetos = (List) objLeitura.readObject();
+            listUtilizadores = (List) objLeitura.readObject();
+            objLeitura.close();
+            arquivoLeitura.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Um erro ocorreu ao tentar carregar os dados do banco",
+                    "Erro", 0);
+        }
+    }
+
+    public boolean getPermission(String user, String pass) {
+        for (int i = 0; i < listUtilizadores.size(); i++) {
+            es.cli.Utilizador util = (es.cli.Utilizador) listUtilizadores.get(i);
+            if (util.getUsername().equals(user) && util.getPassword().equals(pass)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addUtilizador(Utilizador u) {
+        listUtilizadores.add(u);
+    }
+}
