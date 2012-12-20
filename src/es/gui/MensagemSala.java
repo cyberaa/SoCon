@@ -4,17 +4,23 @@
  */
 package es.gui;
 
+import Principal.Main;
+import es.cli.Sala;
+
 /**
  *
  * @author Douglas
  */
 public class MensagemSala extends javax.swing.JFrame {
 
+    private Sala s;
+    
     /**
      * Creates new form MensagemSala
      */
-    public MensagemSala() {
+    public MensagemSala(Sala s) {
         initComponents();
+        this.s = s;
     }
 
     /**
@@ -27,25 +33,30 @@ public class MensagemSala extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtTexto = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nova Mensagem");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtTexto.setColumns(20);
+        txtTexto.setRows(5);
+        jScrollPane1.setViewportView(txtTexto);
 
         jLabel1.setText("Anexar Imagem: ");
 
         jLabel2.setText("Tempo para postagem: ");
 
         jButton1.setText("Enviar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -88,14 +99,19 @@ public class MensagemSala extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        es.cli.MensagemSala m = new es.cli.MensagemSala("", txtTexto.getText(), null, null, null, Main.atual, null, false);
+        s.addMensagem(m);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextArea txtTexto;
     // End of variables declaration//GEN-END:variables
 }

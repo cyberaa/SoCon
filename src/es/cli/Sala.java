@@ -192,11 +192,12 @@ public class Sala implements Serializable{
         this.descricao_sala = tema_sala.setDescricao(descricao);
     }
     
+    public void addMensagem(MensagemSala msg){
+        this.mensagens_sala.add(msg);
+    }
+    
     @Override
     public String toString(){
         return this.id_sala+" - "+this.nome;
-    }
-    
-    
-    
+    } 
 }

@@ -20,6 +20,7 @@ import javax.swing.DefaultListModel;
 public class main_uset extends javax.swing.JFrame {
 
     public static boolean login = false;
+    private Sala s;
 
     /**
      * Creates new form main_uset
@@ -67,7 +68,7 @@ public class main_uset extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnJoin = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
@@ -330,10 +331,10 @@ public class main_uset extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Join");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnJoin.setText("Join");
+        btnJoin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnJoinActionPerformed(evt);
             }
         });
 
@@ -346,7 +347,7 @@ public class main_uset extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnJoin, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
@@ -360,7 +361,7 @@ public class main_uset extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(btnJoin))
                 .addContainerGap(80, Short.MAX_VALUE))
         );
 
@@ -629,7 +630,7 @@ public class main_uset extends javax.swing.JFrame {
     }//GEN-LAST:event_inbox_refreshActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        mostrarSalas();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -659,29 +660,20 @@ public class main_uset extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTabbedPane2StateChanged
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Sala s = (Sala) jList1.getSelectedValue();
-        jList1.removeAll();
-        ArrayList mensagens = s.getMensagens_sala();
-        DefaultListModel l = new DefaultListModel();
-        for (int i = 0; i < mensagens.size(); i++) {
-            es.cli.MensagemSala msg = (es.cli.MensagemSala) mensagens.get(i);
-            es.gui.Mensagem m = new Mensagem(msg.getEmissor().getNome()+" "+msg.getEmissor().getApelido(), msg.getAssunto());
-            l.addElement(m);
-        }
-        jList1.setModel(l);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnJoinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJoinActionPerformed
+        
+    }//GEN-LAST:event_btnJoinActionPerformed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnJoin;
     private javax.swing.JButton inbox_delete;
     private javax.swing.JButton inbox_open;
     private javax.swing.JButton inbox_refresh;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -766,6 +758,7 @@ public class main_uset extends javax.swing.JFrame {
     }
 
     public void mostrarSalas() {
+        jList1.removeAll();
         Sala salas[] = Main.bd.get_all_salas();
         DefaultListModel l = new DefaultListModel();
         for (int i = 0; i < salas.length; i++) {
