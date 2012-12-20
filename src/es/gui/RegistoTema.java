@@ -6,6 +6,7 @@ package es.gui;
 
 import Principal.Main;
 import es.cli.Tema;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,11 @@ public class RegistoTema extends javax.swing.JDialog {
      * Creates new form RegistoTema
      */
     public RegistoTema(JFrame j) {
+        super(j,true);
+        initComponents();
+    }
+
+    RegistoTema(JDialog j) {
         super(j,true);
         initComponents();
     }

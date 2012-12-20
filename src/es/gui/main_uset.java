@@ -286,11 +286,6 @@ public class main_uset extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Mensagens", jPanel4);
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(jList1);
 
         jButton4.setText("Refresh");
@@ -610,6 +605,7 @@ public class main_uset extends javax.swing.JFrame {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         if (login) {
             mostrarDados();
+            mostrarSalas();
         }
     }//GEN-LAST:event_formWindowGainedFocus
 

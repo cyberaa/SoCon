@@ -191,7 +191,10 @@ public class Sala implements Serializable{
         this.descricao_sala = tema_sala.setDescricao(descricao);
     }
     
-    
+    @Override
+    public String toString(){
+        return this.id_sala+" - "+this.nome;
+    }
     
     
     

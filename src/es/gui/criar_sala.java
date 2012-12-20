@@ -75,6 +75,13 @@ public class criar_sala extends javax.swing.JDialog {
         setTitle("SoCon - Create Room");
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -124,8 +131,6 @@ public class criar_sala extends javax.swing.JDialog {
 
         buttonGroup1.add(jRadioButton4);
         jRadioButton4.setText("Private");
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton2.setText("Create a new Theme");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -356,12 +361,11 @@ public class criar_sala extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        RegistoTema rt = new RegistoTema(null);
+        RegistoTema rt = new RegistoTema(this);
         rt.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        mostrarTemas();
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -370,16 +374,21 @@ public class criar_sala extends javax.swing.JDialog {
             if (roomName.getText().trim().isEmpty() || roomName.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Nome da sala ou descrição em branco", "Erro", JOptionPane.ERROR_MESSAGE);
             } else {
-               Sala s = new Sala(num, roomName.getName(), (Tema) jComboBox1.getSelectedItem(), 
-                       txtDescricao.getText(), jSpinner1.getComponentCount(), null);
-               Main.bd.addSala(s);
-               Main.bd.Serializar();
+                Sala s = new Sala(num, roomName.getText(), (Tema) jComboBox1.getSelectedItem(),
+                        txtDescricao.getText(), jSpinner1.getComponentCount(), null);
+
+                Main.bd.addSala(s);
+                Main.bd.Serializar();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Introduz o nome da sala!", "Erro", JOptionPane.ERROR_MESSAGE);
-
+            JOptionPane.showMessageDialog(this, "Introduz o número da sala!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        mostrarTemas();
+    }//GEN-LAST:event_formWindowGainedFocus
     /**
      * @param args the command line arguments
      */
