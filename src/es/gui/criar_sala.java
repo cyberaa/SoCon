@@ -115,6 +115,11 @@ public class criar_sala extends javax.swing.JDialog {
 
         buttonGroup2.add(jRadioButton2);
         jRadioButton2.setText("Custom");
+        jRadioButton2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jRadioButton2StateChanged(evt);
+            }
+        });
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
@@ -377,8 +382,11 @@ public class criar_sala extends javax.swing.JDialog {
                 Sala s = new Sala(num, roomName.getText(), (Tema) jComboBox1.getSelectedItem(),
                         txtDescricao.getText(), jSpinner1.getComponentCount(), null);
 
-                Main.bd.addSala(s);
-                Main.bd.Serializar();
+                if(Main.bd.addSala(s)==1){
+                    JOptionPane.showMessageDialog(this, "Sala adicionada com sucesso", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(this, "ID já existente", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Introduz o número da sala!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -389,6 +397,10 @@ public class criar_sala extends javax.swing.JDialog {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         mostrarTemas();
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void jRadioButton2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton2StateChanged
+        
+    }//GEN-LAST:event_jRadioButton2StateChanged
     /**
      * @param args the command line arguments
      */

@@ -202,10 +202,10 @@ public class BaseDeDados {
      * fazer uma inserção correcta.
      */
 
-    public int check_sala_exist(String n) {
+    public int check_sala_exist(int n) {
 
         for (int i = 0; i < nlista_salas; i++) {
-            if (lista_salas.get(i).getNome().compareToIgnoreCase(n) == 0) {
+            if (lista_salas.get(i).getId_sala() == n) {
                 return 1;
             }
         }
@@ -219,7 +219,7 @@ public class BaseDeDados {
      */
 
     public int addSala(Sala s) {
-        if (check_sala_exist(s.getNome()) == 0) {
+        if (check_sala_exist(s.getId_sala()) == 0) {
             lista_salas.add(s);
             nlista_salas++;
             Serializar();
@@ -417,10 +417,10 @@ public class BaseDeDados {
      *
      */
 
-    public int remove_sala_by_name(String n) {
+    public int remove_sala_by_name(int n) {
         if (check_sala_exist(n) == 1) {
             for (int i = 0; i < nlista_salas; i++) {
-                if (lista_salas.get(i).getNome().compareToIgnoreCase(n) == 0) {
+                if (lista_salas.get(i).getId_sala() == n) {
                     lista_salas.remove(i);
                     nlista_salas--;
                     return 1;
