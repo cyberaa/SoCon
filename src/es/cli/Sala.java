@@ -5,6 +5,7 @@
 package es.cli;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,17 +21,17 @@ public class Sala implements Serializable{
     private int n_moderadores;
     private int n_admins;
     private Permissoes perm_salas;
-    private MensagemSala [] mensagens_publ;
-    private MensagemSala [] mensagens_sala;
+    private ArrayList <MensagemSala>  mensagens_publ;
+    private ArrayList <MensagemSala> mensagens_sala;
     private int intevalo_mensagem;
     private int intervalo_publ;
-    private Utilizador [] lista_moderadores;
-    private Utilizador [] lista_administradores;
-    private Utilizador [] lista_pessoas_banidas;
+    private ArrayList <Utilizador> lista_moderadores;
+    private ArrayList <Utilizador> lista_administradores;
+    private ArrayList <Utilizador> lista_pessoas_banidas;
     private int rating_pessoas;
     private int ratio_popularidade;
     private int n_visitantes;
-    private MensagemPrivada [] ticket_help;
+    private ArrayList <MensagemPrivada> ticket_help;
 
     public Sala(int id_sala, String nome, Tema tema_sala, String descricao_sala, int n_limite_utlz,Permissoes perm_salas) {
         this.id_sala = id_sala;
@@ -42,17 +43,17 @@ public class Sala implements Serializable{
         this.n_moderadores = 0;
         this.n_admins = 1;
         this.perm_salas = perm_salas;
-        this.mensagens_publ = new MensagemSala[20];
-        this.mensagens_sala = new MensagemSala[150];
+        this.mensagens_publ = new ArrayList<MensagemSala>();
+        this.mensagens_sala = new ArrayList<MensagemSala>();
         this.intevalo_mensagem = 60;
         this.intervalo_publ = 120;
-        this.lista_moderadores = new Utilizador[20];
-        this.lista_administradores = new Utilizador[20];
-        this.lista_pessoas_banidas = new Utilizador[200];
+        this.lista_moderadores = new ArrayList<Utilizador>();
+        this.lista_administradores = new ArrayList <Utilizador>();
+        this.lista_pessoas_banidas = new ArrayList<Utilizador>();
         this.rating_pessoas = 0;
         this.ratio_popularidade = 0;
         this.n_visitantes = 0;
-        this.ticket_help = new MensagemPrivada[100];
+        this.ticket_help = new ArrayList<MensagemPrivada>();
     }
 
     public String getDescricao_sala() {
@@ -111,27 +112,27 @@ public class Sala implements Serializable{
         return tema_sala;
     }
 
-    public Utilizador[] getLista_administradores() {
+    public ArrayList<Utilizador> getLista_administradores() {
         return lista_administradores;
     }
 
-    public Utilizador[] getLista_moderadores() {
+    public ArrayList<Utilizador> getLista_moderadores() {
         return lista_moderadores;
     }
 
-    public Utilizador[] getLista_pessoas_banidas() {
+    public ArrayList<Utilizador> getLista_pessoas_banidas() {
         return lista_pessoas_banidas;
     }
 
-    public MensagemSala[] getMensagens_publ() {
+    public ArrayList<MensagemSala> getMensagens_publ() {
         return mensagens_publ;
     }
 
-    public MensagemSala[] getMensagens_sala() {
+    public ArrayList<MensagemSala> getMensagens_sala() {
         return mensagens_sala;
     }
 
-    public MensagemPrivada[] getTicket_help() {
+    public ArrayList<MensagemPrivada> getTicket_help() {
         return ticket_help;
     }
 
@@ -191,10 +192,7 @@ public class Sala implements Serializable{
         this.descricao_sala = tema_sala.setDescricao(descricao);
     }
     
-    @Override
-    public String toString(){
-        return this.id_sala+" - "+this.nome;
-    }
+    
     
     
     
