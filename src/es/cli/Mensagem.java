@@ -17,17 +17,23 @@ public class Mensagem {
     private Date data_envio;
     private String localizacao_imagem;
     private Utilizador emissor;
+    private int delay = 0;
     
 
-    public Mensagem(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor) {
+    public Mensagem(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor,int delay) {
         this.assunto = assunto;
         this.texto_mensagem = texto_mensagem;
         this.data_criada = data_criada;
         this.data_envio = data_envio;
         this.localizacao_imagem = localizacao_imagem;
         this.emissor = emissor;
+        this.delay = delay;
     }
 
+    public void setDelay(int delay) {
+        this.delay = delay;
+    }
+    
     public String getAssunto() {
         return assunto;
     }
