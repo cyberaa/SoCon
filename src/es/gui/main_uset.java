@@ -7,6 +7,7 @@ package es.gui;
 import Principal.Main;
 import es.cli.Sala;
 import javax.swing.DefaultListModel;
+import javax.swing.SingleSelectionModel;
 
 /**
  *
@@ -345,8 +346,18 @@ public class main_uset extends javax.swing.JFrame {
         jButton6.setText("Gerar Relatório");
 
         jButton7.setText("Gerir Salas");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Gerir Temas");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setText("Gerir Utilizadores");
 
@@ -601,6 +612,16 @@ public class main_uset extends javax.swing.JFrame {
             mostrarDados();
         }
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        RegistoTema rt = new RegistoTema(this);
+        rt.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        GerirSalas gs = new GerirSalas(this);
+        gs.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
     /**
      * @param args the command line arguments
      */

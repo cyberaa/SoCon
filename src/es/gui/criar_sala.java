@@ -4,16 +4,19 @@
  */
 package es.gui;
 
+import java.awt.Dialog;
+
 /**
  *
  * @author exceltior
  */
-public class criar_sala extends javax.swing.JFrame {
+public class criar_sala extends javax.swing.JDialog {
 
     /**
      * Creates new form criar_sala
      */
-    public criar_sala() {
+    public criar_sala(Dialog j) {
+        super(j,true);
         initComponents();
     }
 

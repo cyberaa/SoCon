@@ -2,7 +2,6 @@ package Principal;
 
 import es.bd.BaseDeDados;
 import es.cli.Utilizador;
-import es.gui.Principal;
 import es.gui.main_uset;
 import java.util.Date;
 import java.util.regex.Matcher;
