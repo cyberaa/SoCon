@@ -67,7 +67,10 @@ public class Tema implements Serializable{
         this.ratio_popularidade = ratio_popularidade;
     }
     
-
+    @Override
+    public String toString(){
+        return this.nome_tema;
+    }
     
     
     

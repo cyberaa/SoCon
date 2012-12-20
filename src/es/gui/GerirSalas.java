@@ -49,6 +49,11 @@ public class GerirSalas extends javax.swing.JDialog {
         jButton3.setText("Editar Sala");
 
         jButton4.setText("Cancelar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,6 +94,10 @@ public class GerirSalas extends javax.swing.JDialog {
         criar_sala ns = new criar_sala(this);
         ns.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
