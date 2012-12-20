@@ -29,6 +29,8 @@ public class main_uset extends javax.swing.JFrame {
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -62,7 +64,25 @@ public class main_uset extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem7 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SoCon - Client Menu");
@@ -74,21 +94,45 @@ public class main_uset extends javax.swing.JFrame {
             }
         });
 
+        jButton10.setText("Consultar Histórico de Mensagens");
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Dados Actuais Conta"));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 277, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2)
-                .addContainerGap(365, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addComponent(jButton10)))
+                .addGap(49, 49, 49))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jButton2)
-                .addContainerGap(374, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton10))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Main", jPanel6);
@@ -164,7 +208,7 @@ public class main_uset extends javax.swing.JFrame {
                     .addComponent(inbox_refresh)
                     .addComponent(inbox_delete)
                     .addComponent(inbox_open))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
 
         jTabbedPane1.getAccessibleContext().setAccessibleName("Inbox");
@@ -210,7 +254,7 @@ public class main_uset extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton3))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Salas", jPanel7);
@@ -223,7 +267,7 @@ public class main_uset extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 434, Short.MAX_VALUE)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
 
         jTabbedPane2.addTab("Opções", jPanel1);
@@ -261,7 +305,7 @@ public class main_uset extends javax.swing.JFrame {
                 .addComponent(jButton7)
                 .addGap(18, 18, 18)
                 .addComponent(jButton8)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Admin Area", jPanel2);
@@ -324,9 +368,68 @@ public class main_uset extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Sala");
+
+        jMenuItem3.setText("Create a New Room");
+        jMenu2.add(jMenuItem3);
+
+        jMenuItem4.setText("Search for a Room By Name");
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Search Room By Theme");
+        jMenu2.add(jMenuItem5);
+
         jMenuBar1.add(jMenu2);
 
+        jMenu4.setText("Users");
+
+        jMenuItem6.setText("Search User By Name");
+        jMenu4.add(jMenuItem6);
+
+        jMenuItem7.setText("Search User by Country");
+        jMenu4.add(jMenuItem7);
+
+        jMenuItem12.setText("Block User");
+        jMenu4.add(jMenuItem12);
+
+        jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Friends");
+
+        jMenuItem8.setText("Add Friend");
+        jMenu5.add(jMenuItem8);
+
+        jMenuItem11.setText("Remove Friend");
+        jMenu5.add(jMenuItem11);
+
+        jMenuItem9.setText("Create a New List");
+        jMenu5.add(jMenuItem9);
+
+        jMenuItem10.setText("Remove List");
+        jMenu5.add(jMenuItem10);
+
+        jMenuBar1.add(jMenu5);
+
         jMenu3.setText("Help");
+
+        jMenuItem13.setText("Request Server Admin Ticket");
+        jMenu3.add(jMenuItem13);
+
+        jMenu6.setText("Report");
+
+        jMenuItem14.setText("User");
+        jMenu6.add(jMenuItem14);
+
+        jMenuItem15.setText("Room");
+        jMenu6.add(jMenuItem15);
+
+        jMenuItem16.setText("Message");
+        jMenu6.add(jMenuItem16);
+
+        jMenuItem17.setText("Theme");
+        jMenu6.add(jMenuItem17);
+
+        jMenu3.add(jMenu6);
+
         jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
@@ -372,8 +475,8 @@ public class main_uset extends javax.swing.JFrame {
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -426,6 +529,7 @@ public class main_uset extends javax.swing.JFrame {
     private javax.swing.JButton inbox_open;
     private javax.swing.JButton inbox_refresh;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -441,13 +545,32 @@ public class main_uset extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
+    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
