@@ -639,7 +639,10 @@ public class main_uset extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-       
+       if(login){
+           mostrarDados();
+           mostrarSalas();
+       }
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
