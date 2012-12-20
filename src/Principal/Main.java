@@ -3,7 +3,10 @@ package Principal;
 import es.bd.BaseDeDados;
 import es.cli.Utilizador;
 import es.gui.Principal;
+import es.gui.main_uset;
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -28,7 +31,7 @@ public class Main {
      * uma nova.
      */
     public static void main(String args[]) {
-        JFrame j = new Principal();
+        JFrame j = new main_uset();
         bd = new BaseDeDados();
         bd.testeBanco();
         j.setVisible(true);
@@ -124,10 +127,22 @@ public class Main {
             text += "- " + returnMessage(10) + "\n";
             x = false;
         }
-        if (email.trim().isEmpty()) {
-            text += "- " + returnMessage(4) + "\n";
+        
+        //Set the email pattern string  
+        Pattern p = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$");
+
+        //Match the given string with the pattern  
+        Matcher m = p.matcher(email);
+
+        //check whether match is found   
+        boolean matchFound = m.matches();
+
+        if (!matchFound) {
+            text += "- Introduz um email válido\n";
             x = false;
         }
+
+
         if (dataAniversario.trim().isEmpty()) {
             text += "- " + returnMessage(5) + "\n";
             x = false;
@@ -139,22 +154,32 @@ public class Main {
                 x = false;
             }
         }
+
         if (rua.trim().isEmpty()) {
             text += "- " + returnMessage(6) + "\n";
             x = false;
         }
+
+
         try {
             int n = Integer.parseInt(numero);
         } catch (Exception e) {
             text += "- " + returnMessage(7) + "\n";
             x = false;
         }
+
         if (cidade.trim().isEmpty()) {
             text += "- " + returnMessage(8) + "\n";
             x = false;
         }
+
         if (pais.trim().isEmpty()) {
             text += "- " + returnMessage(9) + "\n";
+            x = false;
+        }
+
+        if (searchUser(user)) {
+            text += "- Já existe um utilizador com esse nome!";
             x = false;
         }
         if (!x) {
@@ -162,5 +187,9 @@ public class Main {
             JOptionPane.showMessageDialog(j, text, "Erro", JOptionPane.ERROR_MESSAGE);
         }
         return x;
+    }
+
+    private static boolean searchUser(String user) {
+        return bd.search(user);
     }
 }

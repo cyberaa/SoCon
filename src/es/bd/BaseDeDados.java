@@ -15,11 +15,10 @@ import es.cli.Utilizador;
 public class BaseDeDados {
 
     /*
-     * Variáveis de sistema
-     * caminho contém o caminho da base de dados
+     * Variáveis de sistema caminho contém o caminho da base de dados
      * listUtilizadores contém a lista de utilizadores registados no sistema
      * atual contém o utilizador ativo que realizou o login
-     * 
+     *
      */
     List<Utilizador> listUtilizadores; // lista geral de utilizadores no sistema
     ArrayList<Tema> lista_temas; // lista geral de temas existentes no sistema
@@ -40,9 +39,10 @@ public class BaseDeDados {
         caminho = "C:\\dados\\dados.txt";
     }
 
-    /* Esta função verifica se existe um arquivo no diretório indicado 
-     * no construtor do objeto, se existir, o sistema faz a leitura dos dados, 
-     * se não existir, o sistema cria uma nova base de dados com um novo utilizador
+    /*
+     * Esta função verifica se existe um arquivo no diretório indicado no
+     * construtor do objeto, se existir, o sistema faz a leitura dos dados, se
+     * não existir, o sistema cria uma nova base de dados com um novo utilizador
      * admin
      */
     public void testeBanco() {
@@ -121,9 +121,8 @@ public class BaseDeDados {
     }
 
     /*
-     * Esta função faz a validação do login, 
-     * verifica se o utilizador existe e se a password indicada confere
-     * com a password na base de dados
+     * Esta função faz a validação do login, verifica se o utilizador existe e
+     * se a password indicada confere com a password na base de dados
      */
     public boolean checkExists(String user, String pass) {
         for (int i = 0; i < listUtilizadores.size(); i++) {
@@ -137,93 +136,90 @@ public class BaseDeDados {
     }
 
     /*
-     * Esta função adiciona o novo utilizador na base de dados e escreve os dados 
-     * na base de dados
+     * Esta função adiciona o novo utilizador na base de dados e escreve os
+     * dados na base de dados
      */
     public int addUtilizador(Utilizador u) {
-        if(check_user_exist(u.getNome())==0)
-        {
+        if (check_user_exist(u.getNome()) == 0) {
             listUtilizadores.add(u);
-            nlista_user ++;
+            nlista_user++;
             Serializar();
             return 1; // utilizador adicionado
-        }
-        else{
+        } else {
             return 0;// utilizador ja existe
         }
     }
     /*
-     * Esta função vai verificar se o tema com o nome pretendido existe no sistema
-     * se não existir vai adicionar o tema a lista de temas e vai guarda e devolve 1
-     * se existir devolve 0
+     * Esta função vai verificar se o tema com o nome pretendido existe no
+     * sistema se não existir vai adicionar o tema a lista de temas e vai guarda
+     * e devolve 1 se existir devolve 0
      */
-    public int addTema(Tema t){
-        if(check_tema_exist(t.getNome_tema())==0)
-        {
+
+    public int addTema(Tema t) {
+        if (check_tema_exist(t.getNome_tema()) == 0) {
             lista_temas.add(t);
             nlista_temas++;
             Serializar();
             return 1;
-        }else{
+        } else {
             return 0;
         }
-        
+
     }
     /*
      * Esta função vai vericar se o tema existe, se existir a funcao devolve 1
-     * se não existir a função devolve 0
-     * Esta função é para ser usada por addTema() para fazer uma inserção correcta.
+     * se não existir a função devolve 0 Esta função é para ser usada por
+     * addTema() para fazer uma inserção correcta.
      */
-    public int check_tema_exist(String name){
-        
-        for(int i = 0;i<nlista_temas;i++)
-        {
-           if(lista_temas.get(i).getNome_tema().compareToIgnoreCase(name)==0)
-           {
-               return 1;
-           }
+
+    public int check_tema_exist(String name) {
+
+        for (int i = 0; i < nlista_temas; i++) {
+            if (lista_temas.get(i).getNome_tema().compareToIgnoreCase(name) == 0) {
+                return 1;
+            }
         }
         return 0;
     }
     /*
-     * Esta função vai verificar se o utilizador ja existe no sistema
-     * se existir devolve 1 senão devolve 0
-     * Esta função é para ser usada por addUtilizador() para fazer uma inserção correcta.
+     * Esta função vai verificar se o utilizador ja existe no sistema se existir
+     * devolve 1 senão devolve 0 Esta função é para ser usada por
+     * addUtilizador() para fazer uma inserção correcta.
      */
-    public int check_user_exist(String username){
-        
-        for(int i = 0;i<nlista_user;i++)
-        {
-           if(listUtilizadores.get(i).getNome().compareToIgnoreCase(username)==0)
-           {
-               return 1;
-           }
+
+    public int check_user_exist(String username) {
+
+        for (int i = 0; i < nlista_user; i++) {
+            if (listUtilizadores.get(i).getNome().compareToIgnoreCase(username) == 0) {
+                return 1;
+            }
         }
         return 0;
     }
-        /*
-     * Esta função vai verificar se a sala ja existe no sistema
-     * se existir devolve 1 senão devolve 0
-     * Esta função é para ser usada por addSala() para fazer uma inserção correcta.
+    /*
+     * Esta função vai verificar se a sala ja existe no sistema se existir
+     * devolve 1 senão devolve 0 Esta função é para ser usada por addSala() para
+     * fazer uma inserção correcta.
      */
-    public int check_sala_exist(String n){
-        
-        for(int i = 0;i<nlista_salas;i++)
-        {
-           if(lista_salas.get(i).getNome().compareToIgnoreCase(n)==0)
-           {
-               return 1;
-           }
+
+    public int check_sala_exist(String n) {
+
+        for (int i = 0; i < nlista_salas; i++) {
+            if (lista_salas.get(i).getNome().compareToIgnoreCase(n) == 0) {
+                return 1;
+            }
         }
         return 0;
     }
-    /*Esta função vai adicionar uma sala ao sistema depois de verificar se
-     * já não existir uma com esse nome adiciona e guarda em ficheiro devolvendo 1
-     * senão devolve 0 ao sistema para saber que já existe uma sala com esse nome.
+    /*
+     * Esta função vai adicionar uma sala ao sistema depois de verificar se já
+     * não existir uma com esse nome adiciona e guarda em ficheiro devolvendo 1
+     * senão devolve 0 ao sistema para saber que já existe uma sala com esse
+     * nome.
      */
-    public int addSala(Sala s){
-        if(check_sala_exist(s.getNome())==0)
-        {
+
+    public int addSala(Sala s) {
+        if (check_sala_exist(s.getNome()) == 0) {
             lista_salas.add(s);
             nlista_salas++;
             Serializar();
@@ -232,127 +228,122 @@ public class BaseDeDados {
         return 0;
     }
     /*
-     * Esta função vai verificar se o utilizador existe através do username
-     * se existir a função devolve o utilizador pretendido
-     * senão devolve null ao sistema
+     * Esta função vai verificar se o utilizador existe através do username se
+     * existir a função devolve o utilizador pretendido senão devolve null ao
+     * sistema
      */
-     public Utilizador get_user_by_name(String username){
+
+    public Utilizador get_user_by_name(String username) {
         Utilizador user = null;
-        for(int i = 0;i<nlista_user;i++)
-        {
-           if(listUtilizadores.get(i).getNome().compareToIgnoreCase(username)==0)
-           {
-               user = listUtilizadores.get(i);
-               return user;
-           }
+        for (int i = 0; i < nlista_user; i++) {
+            if (listUtilizadores.get(i).getNome().compareToIgnoreCase(username) == 0) {
+                user = listUtilizadores.get(i);
+                return user;
+            }
         }
         return null;
     }
-     /*
-      * Esta função procura um tema pelo nome
-      * se o tema existir devolve o tema pretendido
-      * senão devolve null
-      */
-     public Tema get_tema_by_name(String n){
-        Tema t = null;
-        for(int i = 0;i<nlista_temas;i++)
-        {
-           if(lista_temas.get(i).getNome_tema().compareToIgnoreCase(n)==0)
-           {
-               t = lista_temas.get(i);
-               return t;
-           }
-        }
-        return null;
-    }
-      /*
-      * Esta função procura uma saça pelo nome
-      * se a sala existir devolve a sala pretendida
-      * senão devolve null
-      */
-    public Sala get_sala_by_name(String n){
-        Sala t = null;
-        for(int i = 0;i<nlista_salas;i++)
-        {
-           if(lista_salas.get(i).getNome().compareToIgnoreCase(n)==0)
-           {
-               t = lista_salas.get(i);
-               return t;
-           }
-        }
-        return null;
-    }
-    
     /*
-     * Função utilizada para listar todos os utilizadores do sistema
-     * devolve um array com todos os utilizadores
+     * Esta função procura um tema pelo nome se o tema existir devolve o tema
+     * pretendido senão devolve null
      */
-    public Utilizador[] get_all_users()
-    {
-        Utilizador [] users = new Utilizador[nlista_user];
-        for(int i = 0;i< nlista_user;i++){
-            users[i]=listUtilizadores.get(i);
+
+    public Tema get_tema_by_name(String n) {
+        Tema t = null;
+        for (int i = 0; i < nlista_temas; i++) {
+            if (lista_temas.get(i).getNome_tema().compareToIgnoreCase(n) == 0) {
+                t = lista_temas.get(i);
+                return t;
+            }
+        }
+        return null;
+    }
+    /*
+     * Esta função procura uma saça pelo nome se a sala existir devolve a sala
+     * pretendida senão devolve null
+     */
+
+    public Sala get_sala_by_name(String n) {
+        Sala t = null;
+        for (int i = 0; i < nlista_salas; i++) {
+            if (lista_salas.get(i).getNome().compareToIgnoreCase(n) == 0) {
+                t = lista_salas.get(i);
+                return t;
+            }
+        }
+        return null;
+    }
+
+    /*
+     * Função utilizada para listar todos os utilizadores do sistema devolve um
+     * array com todos os utilizadores
+     */
+    public Utilizador[] get_all_users() {
+        Utilizador[] users = new Utilizador[nlista_user];
+        for (int i = 0; i < nlista_user; i++) {
+            users[i] = listUtilizadores.get(i);
         }
         return users;
     }
-     /*
-     * Função utilizada para listar todos os Temas do sistema
-     * devolve um array com todos os Temas
+    /*
+     * Função utilizada para listar todos os Temas do sistema devolve um array
+     * com todos os Temas
      */
-    public Tema[] get_all_temas()
-    {
-        Tema [] t = new Tema[nlista_temas];
-        for(int i = 0;i< nlista_temas;i++){
-            t[i]=lista_temas.get(i);
+
+    public Tema[] get_all_temas() {
+        Tema[] t = new Tema[nlista_temas];
+        for (int i = 0; i < nlista_temas; i++) {
+            t[i] = lista_temas.get(i);
         }
         return t;
     }
     /*
-     * Função utilizada para listar todas as Salas do sistema
-     * devolve um array com todas as salas
+     * Função utilizada para listar todas as Salas do sistema devolve um array
+     * com todas as salas
      */
-    public Sala[] get_all_salas(){
-        Sala [] s = new Sala[nlista_salas];
-        for(int i = 0;i<nlista_salas;i++){
+
+    public Sala[] get_all_salas() {
+        Sala[] s = new Sala[nlista_salas];
+        for (int i = 0; i < nlista_salas; i++) {
             s[i] = lista_salas.get(i);
         }
         return s;
     }
     /*
-     * Função que verifica se um cliente existe no sistema
-     * devolve 1 se existir
+     * Função que verifica se um cliente existe no sistema devolve 1 se existir
      * se não existir devolve 0
      */
-    public int check_client_exist(String username){
-        for(int i = 0;i<nlista_clientes;i++){
-            if(listUtilizadores.get(i).getType() == 1 && listUtilizadores.get(i).getNome().compareToIgnoreCase(username) == 0)
-            {
+
+    public int check_client_exist(String username) {
+        for (int i = 0; i < nlista_clientes; i++) {
+            if (listUtilizadores.get(i).getType() == 1 && listUtilizadores.get(i).getNome().compareToIgnoreCase(username) == 0) {
                 return 1;
             }
         }
         return 0;
     }
-        /*
-     * Função que verifica se um gestor existe no sistema
-     * devolve 1 se existir
+    /*
+     * Função que verifica se um gestor existe no sistema devolve 1 se existir
      * se não existir devolve 0
      */
-    public int check_gestor_exist(String username){
-        for(int i = 0;i<nlista_gestor;i++){
-            if(listUtilizadores.get(i).getType() == 2 && listUtilizadores.get(i).getNome().compareToIgnoreCase(username) == 0)
-            {
+
+    public int check_gestor_exist(String username) {
+        for (int i = 0; i < nlista_gestor; i++) {
+            if (listUtilizadores.get(i).getType() == 2 && listUtilizadores.get(i).getNome().compareToIgnoreCase(username) == 0) {
                 return 1;
             }
         }
         return 0;
     }
-       /*Esta função vai adicionar um cliente ao sistema depois de verificar se
-     * já não existir uma com esse nome adiciona e guarda em ficheiro devolvendo 1
-     * senão devolve 0 ao sistema para saber que já existe uma cliente com esse nome.
+    /*
+     * Esta função vai adicionar um cliente ao sistema depois de verificar se já
+     * não existir uma com esse nome adiciona e guarda em ficheiro devolvendo 1
+     * senão devolve 0 ao sistema para saber que já existe uma cliente com esse
+     * nome.
      */
-    public int addCliente(Cliente s){
-        if(check_client_exist(s.getNome())==0)
-        {
+
+    public int addCliente(Cliente s) {
+        if (check_client_exist(s.getNome()) == 0) {
             listUtilizadores.add(s);
             nlista_clientes++;
             nlista_user++;
@@ -361,13 +352,15 @@ public class BaseDeDados {
         }
         return 0;
     }
-     /*Esta função vai adicionar um gestor ao sistema depois de verificar se
-     * já não existir uma com esse nome adiciona e guarda em ficheiro devolvendo 1
-     * senão devolve 0 ao sistema para saber que já existe uma gestor com esse nome.
+    /*
+     * Esta função vai adicionar um gestor ao sistema depois de verificar se já
+     * não existir uma com esse nome adiciona e guarda em ficheiro devolvendo 1
+     * senão devolve 0 ao sistema para saber que já existe uma gestor com esse
+     * nome.
      */
-    public int addGestor(Gestor s){
-        if(check_gestor_exist(s.getNome())==0)
-        {
+
+    public int addGestor(Gestor s) {
+        if (check_gestor_exist(s.getNome()) == 0) {
             listUtilizadores.add(s);
             nlista_gestor++;
             nlista_user++;
@@ -377,20 +370,18 @@ public class BaseDeDados {
         return 0;
     }
     /*
-     * 
+     *
      */
-    public int remove_utilizador_by_name(String username){
-        if(check_user_exist(username) == 1)
-        {
-            for(int i = 0 ;i<nlista_user;i++)
-            {
-                if(listUtilizadores.get(i).getNome().compareToIgnoreCase(username) == 0){
-                    if(listUtilizadores.get(i).getType() == 1){
+
+    public int remove_utilizador_by_name(String username) {
+        if (check_user_exist(username) == 1) {
+            for (int i = 0; i < nlista_user; i++) {
+                if (listUtilizadores.get(i).getNome().compareToIgnoreCase(username) == 0) {
+                    if (listUtilizadores.get(i).getType() == 1) {
                         nlista_clientes--;
-                        
+
                     }
-                    if(listUtilizadores.get(i).getType() == 2)
-                    {
+                    if (listUtilizadores.get(i).getType() == 2) {
                         nlista_gestor--;
                     }
                     listUtilizadores.remove(i);
@@ -398,56 +389,65 @@ public class BaseDeDados {
                     return 1;
                 }
             }
-        }else{
+        } else {
             return 0;
         }
         return 0;
     }
     /*
-     * 
+     *
      */
-    public int remove_tema_by_name(String n){
-        if(check_tema_exist(n) == 1)
-        {
-            for(int i = 0 ;i<nlista_temas;i++)
-            {
-                if(lista_temas.get(i).getNome_tema().compareToIgnoreCase(n) == 0){
+
+    public int remove_tema_by_name(String n) {
+        if (check_tema_exist(n) == 1) {
+            for (int i = 0; i < nlista_temas; i++) {
+                if (lista_temas.get(i).getNome_tema().compareToIgnoreCase(n) == 0) {
                     lista_temas.remove(i);
                     nlista_temas--;
                     return 1;
                 }
             }
-        }else{
+        } else {
             return 0;
         }
         return 0;
-        
+
     }
     /*
-     * 
+     *
      */
-    public int remove_sala_by_name(String n){
-        if(check_sala_exist(n) == 1)
-        {
-            for(int i = 0 ;i<nlista_salas;i++)
-            {
-                if(lista_salas.get(i).getNome().compareToIgnoreCase(n) == 0){
+
+    public int remove_sala_by_name(String n) {
+        if (check_sala_exist(n) == 1) {
+            for (int i = 0; i < nlista_salas; i++) {
+                if (lista_salas.get(i).getNome().compareToIgnoreCase(n) == 0) {
                     lista_salas.remove(i);
                     nlista_salas--;
                     return 1;
                 }
             }
-        }else{
+        } else {
             return 0;
         }
         return 0;
-        
+
     }
-    
+
     /*
-     * Essa função retorna o utilizador atual que está com o login ativo no sistema
+     * Essa função retorna o utilizador atual que está com o login ativo no
+     * sistema
      */
-    public Utilizador getAtual(){
+    public Utilizador getAtual() {
         return atual;
+    }
+
+    public boolean search(String user) {
+        for (int i = 0; i < listUtilizadores.size(); i++) {
+            es.cli.Utilizador util = (es.cli.Utilizador) listUtilizadores.get(i);
+            if (util.getUsername().equals(user)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

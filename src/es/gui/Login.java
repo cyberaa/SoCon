@@ -161,7 +161,7 @@ public class Login extends javax.swing.JDialog {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Você fez login como " + txtLogin.getText().toUpperCase() + ", seja bem vindo!", "BEM VINDO", JOptionPane.PLAIN_MESSAGE);
                 
-                Principal.notifyLogin();
+                main_uset.notifyLogin();
                 this.setVisible(false);
             }
         }
