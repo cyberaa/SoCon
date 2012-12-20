@@ -17,6 +17,7 @@ public class Mensagem {
     private Date data_envio;
     private String localizacao_imagem;
     private Utilizador emissor;
+    
 
     public Mensagem(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor) {
         this.assunto = assunto;

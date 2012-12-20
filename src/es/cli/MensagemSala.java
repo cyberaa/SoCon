@@ -14,14 +14,14 @@ import java.util.Date;
 public class MensagemSala extends Mensagem{
     private Date data_postagem;
     private boolean resposta;
-    private ArrayList<Mensagem> mensagens_respostas;
+    private ArrayList<String> mensagens_respostas;
     private int n_respostas = 0;
 
-    public MensagemSala(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor,Date m_postagem,boolean resp,int id) {
-        super(assunto, texto_mensagem, data_criada, data_envio, localizacao_imagem, emissor,id);
+    public MensagemSala(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor,Date m_postagem,boolean resp) {
+        super(assunto, texto_mensagem, data_criada, data_envio, localizacao_imagem, emissor);
         resposta = resp;
         data_postagem = m_postagem;
-        this.mensagens_respostas = new ArrayList<Mensagem>();
+        this.mensagens_respostas = new ArrayList<String>();
     }
 
     public Date getData_postagem() {
@@ -29,7 +29,7 @@ public class MensagemSala extends Mensagem{
     }
 
 
-    public ArrayList<Mensagem> getMensagens_respostas() {
+    public ArrayList<String> getMensagens_respostas() {
         return mensagens_respostas;
     }
 
@@ -41,7 +41,7 @@ public class MensagemSala extends Mensagem{
         this.data_postagem = data_postagem;
     }
 
-    public int add_resposta_lista(Mensagem resposta){
+    public int add_resposta_lista(String resposta){
         if(n_respostas<250)
         {
             mensagens_respostas.add(resposta);
@@ -61,10 +61,17 @@ public class MensagemSala extends Mensagem{
     public void addN_respostas(int n_respostas) {
         this.n_respostas += n_respostas;
     }
-    public int remove_resposta_lista(String mensagem,Utilizador autor){
-        
+
+    public int remove_resposta_lista(String mensagem){
+           for(int i = 0;i<n_respostas;i++){
+                if(mensagens_respostas.get(i).contains(mensagem)==true)
+                {
+                    mensagens_respostas.remove(i);
+                    return 1;
+                }
+         }
             
-        
+        return 0;
     }
     public void setResposta(boolean resposta) {
         this.resposta = resposta;
