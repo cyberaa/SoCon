@@ -6,6 +6,11 @@ package es.gui;
 
 import Principal.Main;
 import es.cli.Sala;
+import es.cli.Utilizador;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultListModel;
 
 /**
@@ -326,6 +331,11 @@ public class main_uset extends javax.swing.JFrame {
         });
 
         jButton3.setText("Join");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -629,10 +639,7 @@ public class main_uset extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        if (login) {
-            mostrarDados();
-            mostrarSalas();
-        }
+       
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -648,6 +655,19 @@ public class main_uset extends javax.swing.JFrame {
     private void jTabbedPane2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane2StateChanged
         
     }//GEN-LAST:event_jTabbedPane2StateChanged
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Sala s = (Sala) jList1.getSelectedValue();
+        jList1.removeAll();
+        ArrayList mensagens = s.getMensagens_sala();
+        DefaultListModel l = new DefaultListModel();
+        for (int i = 0; i < mensagens.size(); i++) {
+            es.cli.MensagemSala msg = (es.cli.MensagemSala) mensagens.get(i);
+            es.gui.Mensagem m = new Mensagem(msg.getEmissor().getNome()+" "+msg.getEmissor().getApelido(), msg.getAssunto());
+            l.addElement(m);
+        }
+        jList1.setModel(l);
+    }//GEN-LAST:event_jButton3ActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -737,7 +757,9 @@ public class main_uset extends javax.swing.JFrame {
         lblCidade.setText(Main.atual.getCidade());
         lblPais.setText(Main.atual.getPais());
         lblemail.setText(Main.atual.getEmail());
-        
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        String data = formatter.format(Main.atual.getData_nascimento());
+        lblData.setText(data);
     }
 
     public void mostrarSalas() {
@@ -748,4 +770,5 @@ public class main_uset extends javax.swing.JFrame {
         }
         jList1.setModel(l);
     }
+
 }
