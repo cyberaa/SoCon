@@ -5,9 +5,11 @@
 package es.gui;
 
 import Principal.Main;
+import es.cli.Permissoes;
 import es.cli.Sala;
 import es.cli.Tema;
 import java.awt.Dialog;
+import java.security.Permission;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -18,12 +20,15 @@ import javax.swing.JOptionPane;
  */
 public class criar_sala extends javax.swing.JDialog {
 
+    Permissoes perm ;
+    
     /**
      * Creates new form criar_sala
      */
     public criar_sala(Dialog j) {
         super(j, true);
         initComponents();
+        perm = new Permissoes();
     }
 
     /**
@@ -42,7 +47,7 @@ public class criar_sala extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         roomName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnAdvanced = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -100,7 +105,13 @@ public class criar_sala extends javax.swing.JDialog {
 
         jLabel2.setText("Room User Limit: ");
 
-        jButton1.setText("Advanced");
+        btnAdvanced.setText("Advanced");
+        btnAdvanced.setEnabled(false);
+        btnAdvanced.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdvancedActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Room Permissions: ");
 
@@ -243,7 +254,7 @@ public class criar_sala extends javax.swing.JDialog {
                             .addComponent(jLabel3)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(jButton1))))
+                                .addComponent(btnAdvanced))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel7)))
@@ -286,7 +297,7 @@ public class criar_sala extends javax.swing.JDialog {
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnAdvanced)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
@@ -380,7 +391,7 @@ public class criar_sala extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Nome da sala ou descrição em branco", "Erro", JOptionPane.ERROR_MESSAGE);
             } else {
                 Sala s = new Sala(num, roomName.getText(), (Tema) jComboBox1.getSelectedItem(),
-                        txtDescricao.getText(), jSpinner1.getComponentCount(), null);
+                        txtDescricao.getText(), jSpinner1.getComponentCount(), perm);
 
                 if(Main.bd.addSala(s)==1){
                     JOptionPane.showMessageDialog(this, "Sala adicionada com sucesso", "Aviso", JOptionPane.INFORMATION_MESSAGE);
@@ -391,7 +402,6 @@ public class criar_sala extends javax.swing.JDialog {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Introduz o número da sala!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
-
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -399,15 +409,24 @@ public class criar_sala extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void jRadioButton2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jRadioButton2StateChanged
-        
+        if (jRadioButton2.isSelected()) {
+            btnAdvanced.setEnabled(true);
+        } else {
+            btnAdvanced.setEnabled(false);
+        }
     }//GEN-LAST:event_jRadioButton2StateChanged
+
+    private void btnAdvancedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdvancedActionPerformed
+        Sala_Advanced sadv = new Sala_Advanced(perm, this);
+        sadv.setVisible(true);
+    }//GEN-LAST:event_btnAdvancedActionPerformed
     /**
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdvanced;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -444,5 +463,9 @@ public class criar_sala extends javax.swing.JDialog {
         Tema temas[] = Main.bd.get_all_temas();
         DefaultComboBoxModel l = new DefaultComboBoxModel(temas);
         jComboBox1.setModel(l);
+    }
+    
+    public void setPermissoes(Permissoes p){
+        perm = p;
     }
 }

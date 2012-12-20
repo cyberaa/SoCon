@@ -4,11 +4,13 @@
  */
 package es.cli;
 
+import java.io.Serializable;
+
 /**
  *
  * @author exceltior
  */
-public class Permissoes {
+public class Permissoes implements Serializable{
     private boolean kick;
     private boolean ban;
     private boolean unban;
