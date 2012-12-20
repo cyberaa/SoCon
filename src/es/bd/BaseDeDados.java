@@ -2,6 +2,8 @@ package es.bd;
 
 import es.cli.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,9 +53,11 @@ public class BaseDeDados {
             f.mkdir();
             f = new File(caminho);
             if (!f.exists()) {
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                Date data = (java.util.Date) formatter.parse("01/01/2001");
                 //JOptionPane.showMessageDialog(null, "Não foi encontrado banco de dados anteriores.\n"
                 //        + "será criado um novo banco em C:/dados/", "Erro", 1);
-                Gestor g = new Gestor(1, true, "admin", "admin", "Administrador", "", new Date(2012, 01, 01),
+                Gestor g = new Gestor(1, true, "admin", "admin", "Administrador", "", data,
                         "admin@admin.com.br", "", "", "", "", "Portugal");
                 addUtilizador(g);
                 Serializar();

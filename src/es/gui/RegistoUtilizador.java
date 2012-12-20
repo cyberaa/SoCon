@@ -3,7 +3,12 @@ package es.gui;
 import Principal.Main;
 import es.cli.Utilizador;
 import java.awt.event.WindowEvent;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -368,13 +373,21 @@ public class RegistoUtilizador extends javax.swing.JDialog {
                 String.copyValueOf(txtPassword2.getPassword()), txtNome.getText(), txtApelido.getText(),
                 txtEmail.getText(), txtDataAniversario.getText(), txtRua.getText(), txtNumero.getText(),
                 txtCidade.getText(), txtPais.getText())) {
-            Utilizador utilizador = new Utilizador(txtUser.getText(), String.copyValueOf(txtPassword.getPassword()),
-                    txtNome.getText(), txtApelido.getText(), new Date(txtDataAniversario.getText()),
-                    txtEmail.getText(), txtRua.getText(), txtNumero.getText(), txtComp.getText(),
-                    txtCidade.getText(), txtPais.getText(),0);
-            Main.bd.addUtilizador(utilizador);
-            JOptionPane.showMessageDialog(this, "Registo efetuado!");
-            this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            Date data;
+            try {
+                data = (java.util.Date) formatter.parse(txtDataAniversario.getText());
+                Utilizador utilizador = new Utilizador(txtUser.getText(), String.copyValueOf(txtPassword.getPassword()),
+                        txtNome.getText(), txtApelido.getText(), data,
+                        txtEmail.getText(), txtRua.getText(), txtNumero.getText(), txtComp.getText(),
+                        txtCidade.getText(), txtPais.getText(), 0);
+                Main.bd.addUtilizador(utilizador);
+                JOptionPane.showMessageDialog(this, "Registo efetuado!");
+                this.processWindowEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+            } catch (ParseException ex) {
+                JOptionPane.showMessageDialog(this, "Ocorreu um erro ao tentar salvar Utilizador");
+            }
+
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
 

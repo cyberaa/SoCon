@@ -3,6 +3,8 @@ package Principal;
 import es.bd.BaseDeDados;
 import es.cli.Utilizador;
 import es.gui.main_uset;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -147,7 +149,8 @@ public class Main {
             x = false;
         } else {
             try {
-                Date d = new Date(dataAniversario);
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                Date data = (java.util.Date) formatter.parse(dataAniversario);
             } catch (Exception e) {
                 text += "- Introduz uma data de aniversário válida\n";
                 x = false;
