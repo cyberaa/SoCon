@@ -416,12 +416,13 @@ public class BaseDeDados {
      *
      */
 
-    public int remove_sala_by_name(int n) {
+    public int remove_sala_by_number(int n) {
         if (check_sala_exist(n) == 1) {
             for (int i = 0; i < nlista_salas; i++) {
                 if (lista_salas.get(i).getId_sala() == n) {
                     lista_salas.remove(i);
                     nlista_salas--;
+                    Serializar();
                     return 1;
                 }
             }

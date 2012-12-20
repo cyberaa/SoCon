@@ -45,6 +45,11 @@ public class GerirSalas extends javax.swing.JDialog {
         });
 
         jButton2.setText("Apagar Sala");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Editar Sala");
 
@@ -98,6 +103,11 @@ public class GerirSalas extends javax.swing.JDialog {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        ApagarSala aps = new ApagarSala(this, true);
+        aps.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
