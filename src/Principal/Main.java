@@ -25,6 +25,7 @@ public class Main {
      */
     public static BaseDeDados bd;
     public static Utilizador atual;
+    public string teste;
 
     /*
      * inicia o sistema criando uma nova base de dados e fazendo o teste para
