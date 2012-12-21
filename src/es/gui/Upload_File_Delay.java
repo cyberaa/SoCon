@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 public class Upload_File_Delay extends javax.swing.JDialog {
      private boolean upload_message = false;
      private int delay;
+     
     /**
      * Creates new form Upload_File
      */
@@ -190,7 +191,7 @@ public class Upload_File_Delay extends javax.swing.JDialog {
                 
         
         this.jTextField1.setText(selectedfile.getParent()+'/'+selectedfile.getName());
-        
+        this.upload_message =true;
         
     }//GEN-LAST:event_upload_bttnActionPerformed
 
