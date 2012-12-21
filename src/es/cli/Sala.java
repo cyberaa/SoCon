@@ -11,7 +11,8 @@ import java.util.ArrayList;
  *
  * @author exceltior
  */
-public class Sala implements Serializable{
+public class Sala implements Serializable {
+
     private int id_sala;
     private String nome;
     private Tema tema_sala;
@@ -21,20 +22,20 @@ public class Sala implements Serializable{
     private int n_moderadores;
     private int n_admins;
     private Permissoes perm_salas;
-    private ArrayList <MensagemSala>  mensagens_publ;
-    private ArrayList <MensagemSala> mensagens_sala;
+    private ArrayList<MensagemSala> mensagens_publ;
+    private ArrayList<MensagemSala> mensagens_sala;
     private int intevalo_mensagem;
     private int intervalo_publ;
-    private ArrayList <Utilizador> lista_moderadores;
-    private ArrayList <Utilizador> lista_administradores;
-    private ArrayList <Utilizador> lista_pessoas_banidas;
-    private ArrayList <Utilizador> lista_utilizadores;
+    private ArrayList<Utilizador> lista_moderadores;
+    private ArrayList<Utilizador> lista_administradores;
+    private ArrayList<Utilizador> lista_pessoas_banidas;
+    private ArrayList<Utilizador> lista_utilizadores;
     private int rating_pessoas;
     private int ratio_popularidade;
     private int n_visitantes;
-    private ArrayList <MensagemPrivada> ticket_help;
+    private ArrayList<MensagemPrivada> ticket_help;
 
-    public Sala(int id_sala, String nome, Tema tema_sala, String descricao_sala, int n_limite_utlz,Permissoes perm_salas) {
+    public Sala(int id_sala, String nome, Tema tema_sala, String descricao_sala, int n_limite_utlz, Permissoes perm_salas) {
         this.id_sala = id_sala;
         this.nome = nome;
         this.tema_sala = tema_sala;
@@ -50,7 +51,7 @@ public class Sala implements Serializable{
         this.intevalo_mensagem = 60;
         this.intervalo_publ = 120;
         this.lista_moderadores = new ArrayList<Utilizador>();
-        this.lista_administradores = new ArrayList <Utilizador>();
+        this.lista_administradores = new ArrayList<Utilizador>();
         this.lista_pessoas_banidas = new ArrayList<Utilizador>();
         this.rating_pessoas = 0;
         this.ratio_popularidade = 0;
@@ -198,16 +199,25 @@ public class Sala implements Serializable{
         this.tema_sala = tema_sala;
     }
 
-    public void setDescricao_sala(Tema tema_sala,String descricao) {
+    public void setDescricao_sala(Tema tema_sala, String descricao) {
         this.descricao_sala = tema_sala.setDescricao(descricao);
     }
-    
-    public void addMensagem(MensagemSala msg){
+
+    public void addMensagem(MensagemSala msg) {
         this.mensagens_sala.add(msg);
     }
-    
+
     @Override
-    public String toString(){
-        return this.id_sala+" - "+this.nome;
-    } 
+    public String toString() {
+        return this.id_sala + " - " + this.nome;
+    }
+
+    public void removeUtilizador(Utilizador atual) {
+        for (int i = 0; i < lista_utilizadores.size(); i++) {
+            if (lista_utilizadores.get(i).getNome().compareToIgnoreCase(atual.getNome()) == 0) {
+
+                lista_utilizadores.remove(i);
+            }
+        }
+    }
 }

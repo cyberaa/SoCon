@@ -4,9 +4,12 @@
  */
 package es.gui;
 
+import Principal.Main;
+import es.cli.MensagemSala;
 import es.cli.Sala;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +17,13 @@ import javax.swing.DefaultListModel;
  */
 public class Sala_Conversacao extends javax.swing.JFrame {
         Sala sala_actual;
+        MensagemSala mensagem_actual;
     /**
      * Creates new form Sala_Conversacao
      */
     public Sala_Conversacao(Sala s) {
         this.sala_actual = s;
+        mensagem_actual = new MensagemSala();
         initComponents();
     }
 
@@ -42,7 +47,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        mensagem = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         roomName = new javax.swing.JTextField();
@@ -223,7 +228,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(roomName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -231,11 +236,8 @@ public class Sala_Conversacao extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,7 +265,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3)
                             .addComponent(jButton4))
                         .addGap(36, 36, 36))
@@ -291,21 +293,29 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        if(mensagem.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Digite a mensagem");
+        } else {
+            sala_actual.addMensagem(mensagem_actual);
+            atualizarMensagens();
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Upload_File_Delay upd = new Upload_File_Delay(this);
+        Upload_File_Delay upd = new Upload_File_Delay(this,mensagem_actual);
         upd.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         roomName.setText(sala_actual.getNome());
         roomMessage.setText(sala_actual.getDescricao_sala());
+        sala_actual.addLista_utilizadores(Main.atual);
         mostrarUtilizadores();
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        sala_actual.removeUtilizador(Main.atual);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -349,7 +359,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField mensagem;
     private javax.swing.JTextField roomMessage;
     private javax.swing.JTextField roomName;
     // End of variables declaration//GEN-END:variables
@@ -361,5 +371,13 @@ public class Sala_Conversacao extends javax.swing.JFrame {
             dl.addElement(util.get(i));
         }
         jList1.setModel(dl);
+    }
+    
+    public void msgSala(MensagemSala msg){
+        this.mensagem_actual = msg;
+    }
+
+    private void atualizarMensagens() {
+        
     }
 }

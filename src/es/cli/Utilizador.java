@@ -252,4 +252,9 @@ public class Utilizador implements Serializable {
     public String getCidade() {
         return this.cidade;
     }
+    
+    @Override
+    public String toString(){
+        return this.nome+" "+this.apelido;
+    }
 }
