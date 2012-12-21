@@ -670,7 +670,7 @@ public class main_uset extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane2StateChanged
 
     private void btnJoinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJoinActionPerformed
-        if (jList1.getSelectedIndex()>0) {
+        if (jList1.getSelectedIndex()>-1) {
             s = (Sala) jList1.getSelectedValue();
             Sala_Conversacao sc = new Sala_Conversacao(s);
             sc.setVisible(true);
