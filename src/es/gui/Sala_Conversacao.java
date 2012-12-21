@@ -37,8 +37,6 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem8 = new javax.swing.JMenuItem();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
@@ -52,6 +50,8 @@ public class Sala_Conversacao extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         roomName = new javax.swing.JTextField();
         roomMessage = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -79,15 +79,13 @@ public class Sala_Conversacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setEditable(false);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setText("Utilizadores");
 
@@ -135,6 +133,8 @@ public class Sala_Conversacao extends javax.swing.JFrame {
         roomName.setEditable(false);
 
         roomMessage.setEditable(false);
+
+        jScrollPane3.setViewportView(jList2);
 
         jMenu1.setText("File");
 
@@ -233,8 +233,8 @@ public class Sala_Conversacao extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,8 +262,8 @@ public class Sala_Conversacao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mensagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3)
@@ -277,7 +277,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
-                        .addContainerGap())))
+                        .addContainerGap(48, Short.MAX_VALUE))))
         );
 
         pack();
@@ -296,8 +296,10 @@ public class Sala_Conversacao extends javax.swing.JFrame {
         if(mensagem.getText().trim().isEmpty()){
             JOptionPane.showMessageDialog(this, "Digite a mensagem");
         } else {
+            mensagem_actual.setTexto_mensagem(mensagem.getText());
             sala_actual.addMensagem(mensagem_actual);
             atualizarMensagens();
+            mensagem_actual = new MensagemSala();
         }
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -312,12 +314,17 @@ public class Sala_Conversacao extends javax.swing.JFrame {
         roomMessage.setText(sala_actual.getDescricao_sala());
         sala_actual.addLista_utilizadores(Main.atual);
         mostrarUtilizadores();
+        atualizarMensagens();
     }//GEN-LAST:event_formWindowOpened
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         sala_actual.removeUtilizador(Main.atual);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        sala_actual.removeUtilizador(Main.atual);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -333,6 +340,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JList jList1;
+    private javax.swing.JList jList2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -356,9 +364,8 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField mensagem;
     private javax.swing.JTextField roomMessage;
     private javax.swing.JTextField roomName;
@@ -378,6 +385,14 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     }
 
     private void atualizarMensagens() {
-        
+       ArrayList l = sala_actual.getMensagens_sala();
+      DefaultListModel dl = new DefaultListModel();
+        for (int i = 0; i < l.size(); i++) {
+            MensagemSala ms = (MensagemSala) l.get(i);
+            dl.addElement(i+" - "+ms.getTexto_mensagem());
+            
+        }
+        jList2.setModel(dl);
+        Main.bd.Serializar();
     }
 }

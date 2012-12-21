@@ -4,13 +4,14 @@
  */
 package es.cli;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author exceltior
  */
-public class MensagemPrivada extends Mensagem{
+public class MensagemPrivada extends Mensagem implements Serializable{
     private String anexos;
     private Utilizador destinatário;
     private String assunto;

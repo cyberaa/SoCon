@@ -4,13 +4,14 @@
  */
 package es.cli;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author exceltior
  */
-public class Mensagem {
+public class Mensagem implements Serializable{
 
     private String texto_mensagem;
     private Date data_criada;

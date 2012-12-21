@@ -4,6 +4,7 @@
  */
 package es.cli;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,7 +12,7 @@ import java.util.Date;
  *
  * @author exceltior
  */
-public class MensagemSala extends Mensagem{
+public class MensagemSala extends Mensagem implements Serializable{
     private Date data_postagem;
     private boolean resposta;
     private ArrayList<String> mensagens_respostas;
