@@ -634,9 +634,13 @@ public class main_uset extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        this.setVisible(false);
         Login log = new Login(this, true);
         log.setLocationRelativeTo(null);
         log.setVisible(true);
+        if(login == true){
+            this.setVisible(true);
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
@@ -741,6 +745,7 @@ public class main_uset extends javax.swing.JFrame {
     public static void notifyLogin() {
         Main.atual = Main.bd.getAtual();
         main_uset.login = true;
+        
     }
 
     /*

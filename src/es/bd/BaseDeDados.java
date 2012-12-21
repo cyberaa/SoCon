@@ -398,7 +398,9 @@ public class BaseDeDados {
         return 0;
     }
     /*
-     *
+     *Esta função vai remover o tema por nome dado pelo utilizador
+     * devolve 1 se for removido
+     * se não devolve 0
      */
 
     public int remove_tema_by_name(String n) {

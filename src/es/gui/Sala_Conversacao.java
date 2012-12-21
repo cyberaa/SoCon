@@ -289,7 +289,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Mensagem_Sala m = new Mensagem_Sala(sala_actual);
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
