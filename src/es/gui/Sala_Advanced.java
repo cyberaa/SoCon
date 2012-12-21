@@ -159,6 +159,11 @@ public class Sala_Advanced extends javax.swing.JDialog {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Permissions"));
 
         jButton2.setText("Save");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel17.setText("Kick:");
 
@@ -437,12 +442,12 @@ public class Sala_Advanced extends javax.swing.JDialog {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         boolean kick = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean ban = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean unban = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean mod_sala_name = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean mod_sala_tema = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean mod_n_utlz_limite = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean mod_intervalo_mensagens = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
+        boolean ban = Boolean.parseBoolean((String) jComboBox16.getSelectedItem());
+        boolean unban = Boolean.parseBoolean((String) jComboBox17.getSelectedItem());
+        boolean mod_sala_name = Boolean.parseBoolean((String) jComboBox21.getSelectedItem());
+        boolean mod_sala_tema = Boolean.parseBoolean((String) jComboBox20.getSelectedItem());
+        boolean mod_n_utlz_limite = Boolean.parseBoolean((String) jComboBox22.getSelectedItem());
+        boolean mod_intervalo_mensagens = Boolean.parseBoolean((String) jComboBox23.getSelectedItem());
         boolean mod_mensagens = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
         boolean add_moderator = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
         boolean remove_moderator = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
@@ -450,6 +455,10 @@ public class Sala_Advanced extends javax.swing.JDialog {
         boolean remove_admin = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
         boolean check_popularity = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
         boolean super_user_access = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());        
+        
+        perm = new Permissoes(kick, ban, unban, mod_sala_name, mod_sala_tema, mod_n_utlz_limite, 
+                mod_intervalo_mensagens, mod_mensagens, add_moderator, remove_moderator, add_admin, 
+                remove_admin, check_popularity, super_user_access);
         
         j.setPermissoes(perm);
         this.dispose();
@@ -462,6 +471,10 @@ public class Sala_Advanced extends javax.swing.JDialog {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
