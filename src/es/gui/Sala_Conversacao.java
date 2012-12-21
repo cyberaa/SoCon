@@ -15,7 +15,8 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     /**
      * Creates new form Sala_Conversacao
      */
-    public Sala_Conversacao() {
+    public Sala_Conversacao(Sala s) {
+        this.sala_actual = s;
         initComponents();
     }
 

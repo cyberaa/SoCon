@@ -184,7 +184,7 @@ public class main_uset extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addGap(9, 9, 9)
                             .addComponent(lblNome, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,6 +322,11 @@ public class main_uset extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Mensagens", jPanel4);
 
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         jButton4.setText("Refresh");
@@ -665,8 +670,16 @@ public class main_uset extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane2StateChanged
 
     private void btnJoinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJoinActionPerformed
-        
+        if (jList1.getSelectedIndex()>0) {
+            s = (Sala) jList1.getSelectedValue();
+            Sala_Conversacao sc = new Sala_Conversacao(s);
+            sc.setVisible(true);
+        }
     }//GEN-LAST:event_btnJoinActionPerformed
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+        
+    }//GEN-LAST:event_jList1ValueChanged
     /**
      * @param args the command line arguments
      */

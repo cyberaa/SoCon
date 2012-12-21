@@ -449,10 +449,7 @@ public class Sala_Advanced extends javax.swing.JDialog {
         boolean add_admin = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
         boolean remove_admin = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
         boolean check_popularity = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean super_user_access = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        
-        
-        
+        boolean super_user_access = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());        
         
         j.setPermissoes(perm);
         this.dispose();
