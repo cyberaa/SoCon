@@ -448,17 +448,14 @@ public class Sala_Advanced extends javax.swing.JDialog {
         boolean mod_sala_tema = Boolean.parseBoolean((String) jComboBox20.getSelectedItem());
         boolean mod_n_utlz_limite = Boolean.parseBoolean((String) jComboBox22.getSelectedItem());
         boolean mod_intervalo_mensagens = Boolean.parseBoolean((String) jComboBox23.getSelectedItem());
-        boolean mod_mensagens = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean add_moderator = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean remove_moderator = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean add_admin = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
-        boolean remove_admin = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
+        boolean mod_mensagens = Boolean.parseBoolean((String) jComboBox24.getSelectedItem());
+        boolean add_moderator = Boolean.parseBoolean((String) jComboBox25.getSelectedItem());
+        boolean remove_moderator = Boolean.parseBoolean((String) jComboBox26.getSelectedItem());
         boolean check_popularity = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());
         boolean super_user_access = Boolean.parseBoolean((String) jComboBox15.getSelectedItem());        
         
         perm = new Permissoes(kick, ban, unban, mod_sala_name, mod_sala_tema, mod_n_utlz_limite, 
-                mod_intervalo_mensagens, mod_mensagens, add_moderator, remove_moderator, add_admin, 
-                remove_admin, check_popularity, super_user_access);
+                mod_intervalo_mensagens, mod_mensagens, add_moderator, remove_moderator, check_popularity, super_user_access);
         
         j.setPermissoes(perm);
         this.dispose();

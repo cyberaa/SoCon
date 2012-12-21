@@ -15,8 +15,6 @@ public class Permissoes implements Serializable{
     private boolean mod_n_utlz_limite;
     private boolean mod_intervalo_mensagens;
     private boolean mod_mensagens;
-    private boolean add_moderator;
-    private boolean remove_moderator;
     private boolean add_admin;
     private boolean remove_admin;
     private boolean check_popularity;
@@ -31,15 +29,16 @@ public class Permissoes implements Serializable{
         this.mod_n_utlz_limite = false;
         this.mod_intervalo_mensagens = false;
         this.mod_mensagens = false;
-        this.add_moderator = false;
-        this.remove_moderator = false;
         this.add_admin = false;
         this.remove_admin = false;
         this.check_popularity = false;
         this.super_user_access = false;
     }
 
-    public Permissoes(boolean kick, boolean ban, boolean unban, boolean mod_sala_name, boolean mod_sala_tema, boolean mod_n_utlz_limite, boolean mod_intervalo_mensagens, boolean mod_mensagens, boolean add_moderator, boolean remove_moderator, boolean add_admin, boolean remove_admin, boolean check_popularity, boolean super_user_access) {
+    public Permissoes(boolean kick, boolean ban, boolean unban, boolean mod_sala_name,
+            boolean mod_sala_tema, boolean mod_n_utlz_limite, boolean mod_intervalo_mensagens, 
+            boolean mod_mensagens, boolean add_admin, boolean remove_admin, boolean check_popularity, 
+            boolean super_user_access) {
         this.kick = kick;
         this.ban = ban;
         this.unban = unban;
@@ -48,8 +47,6 @@ public class Permissoes implements Serializable{
         this.mod_n_utlz_limite = mod_n_utlz_limite;
         this.mod_intervalo_mensagens = mod_intervalo_mensagens;
         this.mod_mensagens = mod_mensagens;
-        this.add_moderator = add_moderator;
-        this.remove_moderator = remove_moderator;
         this.add_admin = add_admin;
         this.remove_admin = remove_admin;
         this.check_popularity = check_popularity;
@@ -58,10 +55,6 @@ public class Permissoes implements Serializable{
 
     public boolean isAdd_admin() {
         return add_admin;
-    }
-
-    public boolean isAdd_moderator() {
-        return add_moderator;
     }
 
     public boolean isBan() {
@@ -100,9 +93,6 @@ public class Permissoes implements Serializable{
         return remove_admin;
     }
 
-    public boolean isRemove_moderator() {
-        return remove_moderator;
-    }
 
     public boolean isSuper_user_access() {
         return super_user_access;
@@ -116,9 +106,6 @@ public class Permissoes implements Serializable{
         this.add_admin = add_admin;
     }
 
-    public void setAdd_moderator(boolean add_moderator) {
-        this.add_moderator = add_moderator;
-    }
 
     public void setBan(boolean ban) {
         this.ban = ban;
@@ -156,9 +143,6 @@ public class Permissoes implements Serializable{
         this.remove_admin = remove_admin;
     }
 
-    public void setRemove_moderator(boolean remove_moderator) {
-        this.remove_moderator = remove_moderator;
-    }
 
     public void setSuper_user_access(boolean super_user_access) {
         this.super_user_access = super_user_access;
