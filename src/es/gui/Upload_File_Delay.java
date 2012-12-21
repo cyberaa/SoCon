@@ -8,12 +8,12 @@ package es.gui;
  *
  * @author exceltior
  */
-public class Upload_File extends javax.swing.JFrame {
+public class Upload_File_Delay extends javax.swing.JFrame {
 
     /**
      * Creates new form Upload_File
      */
-    public Upload_File() {
+    public Upload_File_Delay() {
         initComponents();
     }
 
