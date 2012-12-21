@@ -46,6 +46,7 @@ public class Sala implements Serializable{
         this.perm_salas = perm_salas;
         this.mensagens_publ = new ArrayList<MensagemSala>();
         this.mensagens_sala = new ArrayList<MensagemSala>();
+        this.lista_utilizadores = new ArrayList<Utilizador>();
         this.intevalo_mensagem = 60;
         this.intervalo_publ = 120;
         this.lista_moderadores = new ArrayList<Utilizador>();
