@@ -4,6 +4,9 @@
  */
 package es.gui;
 
+import Principal.imageFilter;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 /**
@@ -11,7 +14,8 @@ import javax.swing.JFrame;
  * @author exceltior
  */
 public class Upload_File_Delay extends javax.swing.JDialog {
-
+     private boolean upload_message = false;
+     private int delay;
     /**
      * Creates new form Upload_File
      */
@@ -53,6 +57,11 @@ public class Upload_File_Delay extends javax.swing.JDialog {
         });
 
         jButton1.setText("Upload");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,6 +92,11 @@ public class Upload_File_Delay extends javax.swing.JDialog {
         jLabel2.setText("Delay(s):");
 
         jButton3.setText("Set");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -159,6 +173,26 @@ public class Upload_File_Delay extends javax.swing.JDialog {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+                 JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Select image");
+        //limitar tipo de ficheiro
+        chooser.setFileFilter(new imageFilter());
+        chooser.showOpenDialog(this);
+        File selectedfile = chooser.getSelectedFile();
+                
+        
+        this.jTextField1.setText(selectedfile.getParent()+'/'+selectedfile.getName());
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        delay = jSpinner1.getComponentCount();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
