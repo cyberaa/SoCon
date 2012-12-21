@@ -4,16 +4,19 @@
  */
 package es.gui;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author exceltior
  */
-public class Upload_File_Delay extends javax.swing.JFrame {
+public class Upload_File_Delay extends javax.swing.JDialog {
 
     /**
      * Creates new form Upload_File
      */
-    public Upload_File_Delay() {
+    public Upload_File_Delay(JFrame j) {
+        super(j,true);
         initComponents();
     }
 
@@ -145,6 +148,7 @@ public class Upload_File_Delay extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**

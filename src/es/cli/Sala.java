@@ -28,6 +28,7 @@ public class Sala implements Serializable{
     private ArrayList <Utilizador> lista_moderadores;
     private ArrayList <Utilizador> lista_administradores;
     private ArrayList <Utilizador> lista_pessoas_banidas;
+    private ArrayList <Utilizador> lista_utilizadores;
     private int rating_pessoas;
     private int ratio_popularidade;
     private int n_visitantes;
@@ -54,6 +55,14 @@ public class Sala implements Serializable{
         this.ratio_popularidade = 0;
         this.n_visitantes = 0;
         this.ticket_help = new ArrayList<MensagemPrivada>();
+    }
+
+    public ArrayList<Utilizador> getLista_utilizadores() {
+        return lista_utilizadores;
+    }
+
+    public void addLista_utilizadores(Utilizador utilizador) {
+        this.lista_utilizadores.add(utilizador);
     }
 
     public String getDescricao_sala() {
