@@ -5,13 +5,15 @@
 package es.cli;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
  *
  * @author exceltior
  */
-public class Mensagem implements Serializable{
+public class Mensagem implements Serializable {
 
     private String texto_mensagem;
     private Date data_criada;
@@ -21,6 +23,13 @@ public class Mensagem implements Serializable{
     private int delay = 0;
 
     public Mensagem() {
+        localizacao_imagem = "";
+        DateFormat d = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            data_criada = d.parse("01/01/2001");
+            data_envio = d.parse("01/01/2001");
+        } catch (Exception e) {
+        }
     }
 
     public Mensagem(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor, int delay) {
@@ -35,7 +44,6 @@ public class Mensagem implements Serializable{
     public void setDelay(int delay) {
         this.delay = delay;
     }
-
 
     public Date getData_criada() {
         return data_criada;
@@ -56,7 +64,6 @@ public class Mensagem implements Serializable{
     public String getTexto_mensagem() {
         return texto_mensagem;
     }
-
 
     public void setData_criada(Date data_criada) {
         this.data_criada = data_criada;

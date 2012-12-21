@@ -137,7 +137,7 @@ public class ApagarSala extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-        if (jList1.getSelectedIndex() < 0) {
+        if (jList1.getSelectedIndex() >= 0) {
             s = (Sala) jList1.getSelectedValue();
             jTextArea1.setText(s.getDescricao_sala());
         }
