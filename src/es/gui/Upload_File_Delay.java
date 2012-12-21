@@ -5,9 +5,10 @@
 package es.gui;
 
 import Principal.imageFilter;
+import es.cli.MensagemSala;
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,12 +17,16 @@ import javax.swing.JFrame;
 public class Upload_File_Delay extends javax.swing.JDialog {
      private boolean upload_message = false;
      private int delay;
-     
+     private MensagemSala msgSala ;
+     private String image;
+     private Sala_Conversacao j;
     /**
      * Creates new form Upload_File
      */
-    public Upload_File_Delay(JFrame j) {
+    public Upload_File_Delay(Sala_Conversacao j,MensagemSala msg) {
         super(j,true);
+        this.j = j;
+        msgSala = msg;
         initComponents();
     }
 
@@ -37,13 +42,13 @@ public class Upload_File_Delay extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        upload_bttn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        delay_spinner = new javax.swing.JSpinner();
-        set_delay_bttn = new javax.swing.JButton();
-        save_button = new javax.swing.JButton();
-        close_button = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,10 +62,10 @@ public class Upload_File_Delay extends javax.swing.JDialog {
             }
         });
 
-        upload_bttn.setText("Upload");
-        upload_bttn.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Upload");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                upload_bttnActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -74,7 +79,7 @@ public class Upload_File_Delay extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(upload_bttn)
+                .addComponent(jButton1)
                 .addContainerGap(31, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -84,7 +89,7 @@ public class Upload_File_Delay extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(upload_bttn))
+                    .addComponent(jButton1))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
@@ -92,10 +97,10 @@ public class Upload_File_Delay extends javax.swing.JDialog {
 
         jLabel2.setText("Delay(s):");
 
-        set_delay_bttn.setText("Set");
-        set_delay_bttn.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("Set");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                set_delay_bttnActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -107,9 +112,9 @@ public class Upload_File_Delay extends javax.swing.JDialog {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2)
                 .addGap(49, 49, 49)
-                .addComponent(delay_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(set_delay_bttn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
@@ -118,22 +123,22 @@ public class Upload_File_Delay extends javax.swing.JDialog {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(delay_spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(set_delay_bttn))
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
-        save_button.setText("Save");
-        save_button.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText("Save");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                save_buttonActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
-        close_button.setText("Close");
-        close_button.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setText("Close");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                close_buttonActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -149,9 +154,9 @@ public class Upload_File_Delay extends javax.swing.JDialog {
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
-                .addComponent(save_button)
+                .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(close_button)
+                .addComponent(jButton5)
                 .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
@@ -163,8 +168,8 @@ public class Upload_File_Delay extends javax.swing.JDialog {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(save_button)
-                    .addComponent(close_button))
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
                 .addContainerGap())
         );
 
@@ -176,50 +181,51 @@ public class Upload_File_Delay extends javax.swing.JDialog {
         
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.dispose();
-    }//GEN-LAST:event_close_buttonActionPerformed
+    }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void upload_bttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upload_bttnActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-                 JFileChooser chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         chooser.setDialogTitle("Select image");
         //limitar tipo de ficheiro
         chooser.setFileFilter(new imageFilter());
         chooser.showOpenDialog(this);
         File selectedfile = chooser.getSelectedFile();
                 
+        image = selectedfile.getParent()+'/'+selectedfile.getName();
+        this.jTextField1.setText(image);
         
-        this.jTextField1.setText(selectedfile.getParent()+'/'+selectedfile.getName());
-        this.upload_message =true;
         
-    }//GEN-LAST:event_upload_bttnActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void set_delay_bttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_delay_bttnActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        delay = delay_spinner.getComponentCount();
-    }//GEN-LAST:event_set_delay_bttnActionPerformed
+        delay = jSpinner1.getComponentCount();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_buttonActionPerformed
-        // TODO add your handling code here:
-        
-        this.setVisible(false);
-    }//GEN-LAST:event_save_buttonActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        msgSala.setDelay(delay);
+        msgSala.setLocalizacao_imagem(image);
+        j.msgSala(msgSala);
+        JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton close_button;
-    private javax.swing.JSpinner delay_spinner;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton save_button;
-    private javax.swing.JButton set_delay_bttn;
-    private javax.swing.JButton upload_bttn;
     // End of variables declaration//GEN-END:variables
 }

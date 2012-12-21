@@ -11,17 +11,18 @@ import java.util.Date;
  * @author exceltior
  */
 public class Mensagem {
-    private String assunto;
+
     private String texto_mensagem;
     private Date data_criada;
     private Date data_envio;
     private String localizacao_imagem;
     private Utilizador emissor;
     private int delay = 0;
-    
 
-    public Mensagem(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor,int delay) {
-        this.assunto = assunto;
+    public Mensagem() {
+    }
+
+    public Mensagem(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor, int delay) {
         this.texto_mensagem = texto_mensagem;
         this.data_criada = data_criada;
         this.data_envio = data_envio;
@@ -33,11 +34,7 @@ public class Mensagem {
     public void setDelay(int delay) {
         this.delay = delay;
     }
-    
 
-    public String getAssunto() {
-        return assunto;
-    }
 
     public Date getData_criada() {
         return data_criada;
@@ -59,9 +56,6 @@ public class Mensagem {
         return texto_mensagem;
     }
 
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
-    }
 
     public void setData_criada(Date data_criada) {
         this.data_criada = data_criada;
@@ -82,6 +76,4 @@ public class Mensagem {
     public void setTexto_mensagem(String texto_mensagem) {
         this.texto_mensagem = texto_mensagem;
     }
-    
-    
 }

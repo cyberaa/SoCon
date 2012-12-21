@@ -13,7 +13,8 @@ import java.util.Date;
 public class MensagemPrivada extends Mensagem{
     private String anexos;
     private Utilizador destinatário;
-
+    private String assunto;
+    
     public MensagemPrivada(String anexos, Utilizador destinatário, String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor,int delay) {
         super(assunto, texto_mensagem, data_criada, data_envio, localizacao_imagem, emissor,delay);
         this.anexos = anexos;

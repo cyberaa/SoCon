@@ -17,12 +17,17 @@ public class MensagemSala extends Mensagem{
     private ArrayList<String> mensagens_respostas;
     private int n_respostas = 0;
 
+    public MensagemSala(){
+        
+    }
+    
     public MensagemSala(String assunto, String texto_mensagem, Date data_criada, Date data_envio, String localizacao_imagem, Utilizador emissor,Date m_postagem,boolean resp,int delay) {
         super(assunto, texto_mensagem, data_criada, data_envio, localizacao_imagem, emissor,delay);
         resposta = resp;
         data_postagem = m_postagem;
         this.mensagens_respostas = new ArrayList<String>();
     }
+
 
     public Date getData_postagem() {
         return data_postagem;
