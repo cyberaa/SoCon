@@ -373,7 +373,9 @@ public class BaseDeDados {
         return 0;
     }
     /*
-     *
+     *A função tem como propósito apgar um utilizador do sistema, recebendo por parâmetro o nome do utilizador a apagar
+     * se este existir e for apagado retorna 1
+     * senão retorna 0
      */
 
     public int remove_utilizador_by_name(String username) {
@@ -419,7 +421,9 @@ public class BaseDeDados {
 
     }
     /*
-     *
+     *A função seguinte serve para remover uma sala pelo id
+     * se a sala existir é removida e retorna 1
+     * senão retorna 0
      */
 
     public int remove_sala_by_number(int n) {
@@ -446,7 +450,11 @@ public class BaseDeDados {
     public Utilizador getAtual() {
         return atual;
     }
-
+    /*
+     * Esta função tem como propósito procurar um utilizador no sistema através do nome
+     * se o utilizador existir devolve true
+     * senão devolve false;
+     */
     public boolean search(String user) {
         for (int i = 0; i < listUtilizadores.size(); i++) {
             es.cli.Utilizador util = (es.cli.Utilizador) listUtilizadores.get(i);

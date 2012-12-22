@@ -195,7 +195,10 @@ public class Main {
         }
         return x;
     }
-
+    /* Funcao para procurar utilizador pelo nome no sistema
+     * devolve true se existir
+     * senão devolve false
+     */
     private static boolean searchUser(String user) {
         return bd.search(user);
     }

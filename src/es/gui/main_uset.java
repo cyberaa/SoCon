@@ -751,7 +751,10 @@ public class main_uset extends javax.swing.JFrame {
     private javax.swing.JLabel lblPais;
     private javax.swing.JLabel lblemail;
     // End of variables declaration//GEN-END:variables
-
+    /*
+     * A função vai confirmar o estado de login e através do objecto Utilizador 
+     * vai permitir mais tarde ver todos os dados do utilizador
+     */
     public static void notifyLogin() {
         Main.atual = Main.bd.getAtual();
         main_uset.login = true;
@@ -760,7 +763,10 @@ public class main_uset extends javax.swing.JFrame {
 
     /*
      * Esta função mostra os dados do utilizador no sistema
+     * Esta informação vai ser apresentada no menu principal na tab de menu
+     * Contem todos os dados da conta actual
      */
+
     public void mostrarDados() {
         lblNome.setText(Main.atual.getNome() + " " + Main.atual.getApelido());
         lblMorada.setText(Main.atual.getRua() + " nº" + Main.atual.getNumero() + " " + Main.atual.getComplemento());
@@ -772,6 +778,9 @@ public class main_uset extends javax.swing.JFrame {
         lblData.setText(data);
     }
 
+    /*
+     * Esta função vai buscar todas as salas existentes no sistema e apresenta - as ao utilizador na forma de lista
+     */
     public void mostrarSalas() {
         jList1.removeAll();
         Sala salas[] = Main.bd.get_all_salas();

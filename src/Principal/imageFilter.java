@@ -15,6 +15,9 @@ public class imageFilter extends FileFilter{
     private String imageformat = "jpg";
     private char DotIndex = '.';
     
+    /*Funcao Recebe o ficheiro e divide o nome e a extensão em partes
+     * devolve uma string correspondente a extensão do ficheiro
+     */
     public String extension(File F){
         String FileName = F.getName();
         int indexfile = FileName.lastIndexOf(DotIndex);
@@ -31,6 +34,9 @@ public class imageFilter extends FileFilter{
         
         return "Jpg Only";
     }
+    /*
+     * Esta função vai filtar as imagens aceitando apenas ficheiro com a extensão definida
+     */
     public boolean accept(File F){
         if(F.isDirectory()){
             return true;
