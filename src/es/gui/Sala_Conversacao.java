@@ -351,9 +351,10 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         roomName.setText(sala_actual.getNome());
         roomMessage.setText(sala_actual.getDescricao_sala());
+        sala_actual.addLista_utilizadores(Main.atual);
+        Main.bd.Serializar();
         mostrarUtilizadores();
         atualizarMensagens();
-        Main.bd.Serializar();
     }//GEN-LAST:event_formWindowOpened
 
     private void close_bttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_bttnActionPerformed
@@ -371,7 +372,6 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     private void refresh_buttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_buttnActionPerformed
         roomName.setText(sala_actual.getNome());
         roomMessage.setText(sala_actual.getDescricao_sala());
-        sala_actual.addLista_utilizadores(Main.atual);
         atualizarMensagens();
         Main.bd.Serializar();
         mostrarUtilizadores();
