@@ -337,10 +337,11 @@ public class Sala_Conversacao extends javax.swing.JFrame {
             Date actual = c.getTime();
             mensagem_actual.setData_criada(actual);
             mensagem_actual.setEmissor(Main.atual);
+            mensagem_actual.setSala(sala_actual);
             if (mensagem_actual.getDelay() > 0) {
                 MessageTimer mt = new MessageTimer(sala_actual, mensagem_actual);
-                JOptionPane.showMessageDialog(this, "A mensagem será publicada em "+mensagem_actual.getDelay()
-                        +" segundos");
+                JOptionPane.showMessageDialog(this, "A mensagem será publicada em " + mensagem_actual.getDelay()
+                        + " segundos");
             } else {
                 mensagem_actual.setData_envio(actual);
                 sala_actual.addMensagem(mensagem_actual);
@@ -379,11 +380,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosed
 
     private void refresh_buttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh_buttnActionPerformed
-        roomName.setText(sala_actual.getNome());
-        roomMessage.setText(sala_actual.getDescricao_sala());
-        atualizarMensagens();
-        Main.bd.Serializar();
-        mostrarUtilizadores();
+        refresh();
     }//GEN-LAST:event_refresh_buttnActionPerformed
     /**
      * @param args the command line arguments
@@ -461,7 +458,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
         //DefaultListModel dl = new DefaultListModel();
         for (int i = 0; i < l.size(); i++) {
             MensagemSala ms = (MensagemSala) l.get(i);
-            mensagens_panel mp = new mensagens_panel(ms);
+            mensagens_panel mp = new mensagens_panel(ms,this);
 
             cc.anchor = GridBagConstraints.WEST;
             table.add(mp, cc);
@@ -473,5 +470,13 @@ public class Sala_Conversacao extends javax.swing.JFrame {
         table.update(table.getGraphics());
         table.paint(table.getGraphics());
         table.revalidate();
+    }
+
+    void refresh() {
+        roomName.setText(sala_actual.getNome());
+        roomMessage.setText(sala_actual.getDescricao_sala());
+        atualizarMensagens();
+        Main.bd.Serializar();
+        mostrarUtilizadores();
     }
 }

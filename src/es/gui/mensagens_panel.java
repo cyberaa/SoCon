@@ -4,11 +4,12 @@
  */
 package es.gui;
 
-import Principal.MessageTimer;
+import Principal.Main;
 import es.cli.MensagemSala;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,21 +18,27 @@ import javax.swing.ImageIcon;
 public class mensagens_panel extends javax.swing.JPanel {
 
     MensagemSala mensagem;
+    Sala_Conversacao s;
+
     /**
      * Creates new form mensagens_panel
      */
-    public mensagens_panel(MensagemSala m) {
+    public mensagens_panel(MensagemSala m, Sala_Conversacao s) {
         this.mensagem = m;
+        this.s = s;
         initComponents();
         conteudo.setText(mensagem.getTexto_mensagem());
-        if(!mensagem.getLocalizacao_imagem().isEmpty()){
+        if (!mensagem.getLocalizacao_imagem().isEmpty()) {
             ImageIcon img = new ImageIcon(mensagem.getLocalizacao_imagem());
             imagem.setIcon(img);
         }
         DateFormat df = new SimpleDateFormat("dd:MM:yyyy - HH:mm:ss");
         criacao.setText(df.format(mensagem.getData_criada()));
-        publi.setText(df.format(mensagem.getData_envio()));  
-        Nome.setText(mensagem.getEmissor().getNome()+" "+mensagem.getEmissor().getApelido()+" diz: ");
+        publi.setText(df.format(mensagem.getData_envio()));
+        Nome.setText(mensagem.getEmissor().getNome() + " " + mensagem.getEmissor().getApelido() + " diz: ");
+        if (this.mensagem.getEmissor().getUsername().equals(Main.atual.getUsername())) {
+            btnapagar.setEnabled(true);
+        }
     }
 
     /**
@@ -50,12 +57,21 @@ public class mensagens_panel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         publi = new javax.swing.JLabel();
         Nome = new javax.swing.JLabel();
+        btnapagar = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setText("Criado em:");
 
         jLabel2.setText("Publicado em:");
+
+        btnapagar.setText("x");
+        btnapagar.setEnabled(false);
+        btnapagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnapagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -65,29 +81,34 @@ public class mensagens_panel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(imagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(conteudo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(conteudo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(criacao, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(publi, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(criacao, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(publi, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnapagar))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnapagar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(conteudo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imagem, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(imagem, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -98,8 +119,18 @@ public class mensagens_panel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnapagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnapagarActionPerformed
+        int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente apagar essa mensagem?", 
+                "Aviso", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (resp == JOptionPane.YES_OPTION) {
+            this.mensagem.getSala().getMensagens_sala().remove(this.mensagem);
+            s.refresh();
+        }
+    }//GEN-LAST:event_btnapagarActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nome;
+    private javax.swing.JButton btnapagar;
     private javax.swing.JLabel conteudo;
     private javax.swing.JLabel criacao;
     private javax.swing.JLabel imagem;

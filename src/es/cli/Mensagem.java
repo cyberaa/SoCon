@@ -21,6 +21,15 @@ public class Mensagem implements Serializable {
     private String localizacao_imagem;
     private Utilizador emissor;
     private int delay = 0;
+    private Sala sala;
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
 
     public Mensagem() {
         localizacao_imagem = "";
