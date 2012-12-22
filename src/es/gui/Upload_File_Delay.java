@@ -205,7 +205,8 @@ public class Upload_File_Delay extends javax.swing.JDialog {
 
     private void set_delay_bttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_set_delay_bttnActionPerformed
         // TODO add your handling code here:
-        delay = jSpinner1.getComponentCount();
+        delay = (int) jSpinner1.getValue();
+        JOptionPane.showMessageDialog(this, "A mensagem será postada após: "+delay+" segundos");
     }//GEN-LAST:event_set_delay_bttnActionPerformed
 
     private void save_bttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save_bttnActionPerformed
