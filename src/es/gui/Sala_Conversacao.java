@@ -5,6 +5,7 @@
 package es.gui;
 
 import Principal.Main;
+import Principal.MessageTimer;
 import es.cli.MensagemSala;
 import es.cli.Sala;
 import es.cli.Utilizador;
@@ -327,6 +328,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void post_bttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_post_bttnActionPerformed
+
         if (mensagem.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite a mensagem");
         } else {
@@ -334,9 +336,15 @@ public class Sala_Conversacao extends javax.swing.JFrame {
             Calendar c = Calendar.getInstance();
             Date actual = c.getTime();
             mensagem_actual.setData_criada(actual);
-            mensagem_actual.setData_envio(actual);
-            sala_actual.addMensagem(mensagem_actual);
-            Main.bd.Serializar();
+            if (mensagem_actual.getDelay() > 0) {
+                MessageTimer mt = new MessageTimer(sala_actual, mensagem_actual);
+                JOptionPane.showMessageDialog(this, "A mensagem será publicada em "+mensagem_actual.getDelay()
+                        +" segundos");
+            } else {
+                mensagem_actual.setData_envio(actual);
+                sala_actual.addMensagem(mensagem_actual);
+                Main.bd.Serializar();
+            }
             atualizarMensagens();
             mensagem_actual = new MensagemSala();
         }

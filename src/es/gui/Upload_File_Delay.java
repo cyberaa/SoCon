@@ -27,6 +27,8 @@ public class Upload_File_Delay extends javax.swing.JDialog {
         super(j,true);
         this.j = j;
         msgSala = msg;
+        image = "";
+        delay = 0;
         initComponents();
     }
 
