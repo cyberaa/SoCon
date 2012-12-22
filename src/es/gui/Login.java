@@ -18,11 +18,13 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JDialog {
 
+    private JFrame parent;
     /*
      * Esta função cria um novo Dialog em modo modal
      */
     public Login(JFrame parent, boolean modal) {
         super(parent, modal);
+        this.parent = parent;
         initComponents();
     }
 
@@ -162,6 +164,7 @@ public class Login extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Você fez login como " + txtLogin.getText().toUpperCase() + ", seja bem vindo!", "BEM VINDO", JOptionPane.PLAIN_MESSAGE);
                 
                 main_uset.notifyLogin();
+                parent.setVisible(true);
                 this.setVisible(false);
             }
         }

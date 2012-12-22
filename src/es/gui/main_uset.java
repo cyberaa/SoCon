@@ -6,15 +6,9 @@ package es.gui;
 
 import Principal.Main;
 import es.cli.Sala;
-import es.cli.Tema;
-import es.cli.Utilizador;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -616,8 +610,11 @@ public class main_uset extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
+        Login log = new Login(this, true);
+        log.setLocationRelativeTo(null);
+        this.setVisible(false);
+        
+        log.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -642,10 +639,7 @@ public class main_uset extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        this.setVisible(false);
-        Login log = new Login(this, true);
-        log.setLocationRelativeTo(null);
-        log.setVisible(true);
+
         if(login == true){
             this.setVisible(true);
         }

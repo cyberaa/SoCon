@@ -2,6 +2,7 @@ package Principal;
 
 import es.bd.BaseDeDados;
 import es.cli.Utilizador;
+import es.gui.Login;
 import es.gui.main_uset;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -36,7 +37,10 @@ public class Main {
         JFrame j = new main_uset();
         bd = new BaseDeDados();
         bd.testeBanco();
-        j.setVisible(true);
+        j.setVisible(false);
+        Login log = new Login(j, true);
+        log.setLocationRelativeTo(null);
+        log.setVisible(true);
     }
 
     /*
