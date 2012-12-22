@@ -31,11 +31,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="criacao" min="-2" pref="118" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="criacao" min="-2" pref="124" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="publi" pref="118" max="32767" attributes="0"/>
+                      <Component id="publi" pref="124" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -70,14 +70,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Data cria&#xe7;&#xe3;o:"/>
+        <Property name="text" type="java.lang.String" value="Criado em:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="criacao">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Data publica&#xe7;&#xe3;o:"/>
+        <Property name="text" type="java.lang.String" value="Publicado em:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="publi">
