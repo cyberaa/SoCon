@@ -454,7 +454,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
             MensagemSala ms = (MensagemSala) l.get(i);
             mensagens_panel mp = new mensagens_panel(ms);
 
-
+            cc.anchor = GridBagConstraints.WEST;
             table.add(mp, cc);
             cc.gridy++;
             //dl.addElement(i+" - "+ms.getTexto_mensagem());
