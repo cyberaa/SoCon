@@ -45,6 +45,11 @@ public class Mensagem implements Serializable {
         this.delay = delay;
     }
 
+    public int getDelay() {
+        return delay;
+    }
+    
+
     public Date getData_criada() {
         return data_criada;
     }

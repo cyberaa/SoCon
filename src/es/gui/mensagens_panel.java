@@ -4,6 +4,7 @@
  */
 package es.gui;
 
+import Principal.MessageTimer;
 import es.cli.MensagemSala;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,7 +30,7 @@ public class mensagens_panel extends javax.swing.JPanel {
         }
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         criacao.setText(df.format(mensagem.getData_criada()));
-        publi.setText(df.format(mensagem.getData_envio()));
+        publi.setText(df.format(mensagem.getData_envio()));     
     }
 
     /**
