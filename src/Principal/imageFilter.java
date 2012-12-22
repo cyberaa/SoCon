@@ -10,8 +10,9 @@ import javax.swing.filechooser.FileFilter;
  *
  * @author exceltior
  */
+/*Função para fazer filtro de imagem de acordo com o tipo especificado*/
 public class imageFilter extends FileFilter{
-    private String imageformat = "GIF";
+    private String imageformat = "jpg";
     private char DotIndex = '.';
     
     public String extension(File F){
@@ -25,9 +26,10 @@ public class imageFilter extends FileFilter{
             return "";
         }
     }
+    /*Descrição adicionar na box de upload*/
     public String getDescription(){
         
-        return "Gif Only";
+        return "Jpg Only";
     }
     public boolean accept(File F){
         if(F.isDirectory()){

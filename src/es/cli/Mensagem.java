@@ -56,30 +56,32 @@ public class Mensagem implements Serializable {
     public Utilizador getEmissor() {
         return emissor;
     }
-
+/*Funçao para devolver a localização da imagem da mensagem*/
     public String getLocalizacao_imagem() {
         return localizacao_imagem;
     }
-
+/*Funçao para devolver o texto da mensagem*/
     public String getTexto_mensagem() {
         return texto_mensagem;
     }
-
+/*Funçao para introduzir a data a que foi criada a mensagem*/
     public void setData_criada(Date data_criada) {
         this.data_criada = data_criada;
     }
-
+/*Funçao para introduzir a data de envio da mensagem*/
     public void setData_envio(Date data_envio) {
         this.data_envio = data_envio;
     }
-
+    /*Funçao para introduzir o emissor da mensagem*/
     public void setEmissor(Utilizador emissor) {
         this.emissor = emissor;
     }
 
+    /*Funçao para introduzir a localizacao da imagem na mensagem*/
     public void setLocalizacao_imagem(String localizacao_imagem) {
         this.localizacao_imagem = localizacao_imagem;
     }
+    /*Funçao para preencher introduzir mensagem de texto no corpo da mensagem*/
 
     public void setTexto_mensagem(String texto_mensagem) {
         this.texto_mensagem = texto_mensagem;

@@ -375,7 +375,7 @@ public class criar_sala extends javax.swing.JDialog {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    /*cria um novo tema e mete janela visível */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         RegistoTema rt = new RegistoTema(this);
         rt.setVisible(true);
@@ -415,7 +415,7 @@ public class criar_sala extends javax.swing.JDialog {
             btnAdvanced.setEnabled(false);
         }
     }//GEN-LAST:event_jRadioButton2StateChanged
-
+    /*Abre a janela avançada de permissões da sala*/
     private void btnAdvancedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdvancedActionPerformed
         Sala_Advanced sadv = new Sala_Advanced(perm, this);
         sadv.setVisible(true);
@@ -459,12 +459,13 @@ public class criar_sala extends javax.swing.JDialog {
     private javax.swing.JTextField txtNumber;
     // End of variables declaration//GEN-END:variables
 
+        /*função que mostra todos os temas disponíveis no sistema */
     private void mostrarTemas() {
         Tema temas[] = Main.bd.get_all_temas();
         DefaultComboBoxModel l = new DefaultComboBoxModel(temas);
         jComboBox1.setModel(l);
     }
-    
+    /*criar nova permissão para a sala*/
     public void setPermissoes(Permissoes p){
         perm = p;
     }

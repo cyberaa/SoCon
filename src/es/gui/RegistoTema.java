@@ -117,7 +117,7 @@ public class RegistoTema extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /*Funcao para criar um novo tema e adicionar ao sistema*/
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if (txtNomeTema.getText().trim().isEmpty() || txtDescricao.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Algum campo em branco", "Erro", JOptionPane.ERROR_MESSAGE);
