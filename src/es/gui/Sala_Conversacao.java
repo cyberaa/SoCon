@@ -12,9 +12,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 import javax.rmi.CORBA.Util;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -103,11 +101,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
 
         jLabel1.setText("Utilizadores");
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jList1);
 
         jButton1.setText("Start Conversation");
@@ -317,7 +311,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(close_bttn)
                             .addComponent(refresh_buttn))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
 
         pack();
@@ -337,6 +331,10 @@ public class Sala_Conversacao extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Digite a mensagem");
         } else {
             mensagem_actual.setTexto_mensagem(mensagem.getText());
+            Calendar c = Calendar.getInstance();
+            Date actual = c.getTime();
+            mensagem_actual.setData_criada(actual);
+            mensagem_actual.setData_envio(actual);
             sala_actual.addMensagem(mensagem_actual);
             Main.bd.Serializar();
             atualizarMensagens();
@@ -425,7 +423,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
 
     private void mostrarUtilizadores() {
         jList1.removeAll();
-       
+
         DefaultListModel dl = new DefaultListModel();
         ArrayList util = sala_actual.getLista_utilizadores();
         ArrayList u = util;

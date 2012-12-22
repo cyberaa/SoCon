@@ -28,7 +28,7 @@ public class mensagens_panel extends javax.swing.JPanel {
             ImageIcon img = new ImageIcon(mensagem.getLocalizacao_imagem());
             imagem.setIcon(img);
         }
-        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat df = new SimpleDateFormat("HH:mm:ss");
         criacao.setText(df.format(mensagem.getData_criada()));
         publi.setText(df.format(mensagem.getData_envio()));     
     }
