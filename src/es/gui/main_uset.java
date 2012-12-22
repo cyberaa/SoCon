@@ -6,12 +6,15 @@ package es.gui;
 
 import Principal.Main;
 import es.cli.Sala;
+import es.cli.Tema;
 import es.cli.Utilizador;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -350,12 +353,12 @@ public class main_uset extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addGap(0, 392, Short.MAX_VALUE)
                         .addComponent(btnJoin, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                        .addComponent(jButton4)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -650,8 +653,8 @@ public class main_uset extends javax.swing.JFrame {
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
        if(login){
-           mostrarDados();
            mostrarSalas();
+           mostrarDados();
        }
     }//GEN-LAST:event_formWindowGainedFocus
 
@@ -784,5 +787,6 @@ public class main_uset extends javax.swing.JFrame {
         }
         jList1.setModel(l);
     }
+    
 
 }

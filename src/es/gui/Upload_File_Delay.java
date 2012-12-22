@@ -214,6 +214,7 @@ public class Upload_File_Delay extends javax.swing.JDialog {
         msgSala.setLocalizacao_imagem(image);
         j.msgSala(msgSala);
         JOptionPane.showMessageDialog(this, "Salvo com sucesso!");
+        this.dispose();
     }//GEN-LAST:event_save_bttnActionPerformed
 
     /**
