@@ -6,6 +6,7 @@ package es.gui;
 
 import Principal.Main;
 import es.cli.MensagemSala;
+import java.awt.event.MouseEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
@@ -27,7 +28,7 @@ public class mensagens_panel extends javax.swing.JPanel {
         this.mensagem = m;
         this.s = s;
         initComponents();
-        conteudo.setText(mensagem.getTexto_mensagem());
+        conteudo.setText(convertToMultiline(mensagem.getTexto_mensagem()));
         if (!mensagem.getLocalizacao_imagem().isEmpty()) {
             ImageIcon img = new ImageIcon(mensagem.getLocalizacao_imagem());
             imagem.setIcon(img);
@@ -50,6 +51,8 @@ public class mensagens_panel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         conteudo = new javax.swing.JLabel();
         imagem = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,7 +62,20 @@ public class mensagens_panel extends javax.swing.JPanel {
         Nome = new javax.swing.JLabel();
         btnapagar = new javax.swing.JButton();
 
+        jMenuItem1.setText("Responder");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem1);
+
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLabel1.setText("Criado em:");
 
@@ -82,7 +98,7 @@ public class mensagens_panel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(imagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(imagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
                             .addComponent(conteudo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -91,7 +107,7 @@ public class mensagens_panel extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(publi, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)))
+                                .addComponent(publi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -106,10 +122,10 @@ public class mensagens_panel extends javax.swing.JPanel {
                     .addComponent(Nome, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnapagar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(conteudo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(conteudo, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imagem, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(imagem, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
@@ -121,13 +137,30 @@ public class mensagens_panel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnapagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnapagarActionPerformed
-        int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente apagar essa mensagem?", 
-                "Aviso", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (resp == JOptionPane.YES_OPTION) {
-            this.mensagem.getSala().getMensagens_sala().remove(this.mensagem);
-            s.refresh();
+        if (this.mensagem.isResposta()) {
+            JOptionPane.showMessageDialog(this, "Não é possível apagar mensagens com respostas");
+
+        } else {
+            int resp = JOptionPane.showConfirmDialog(this, "Deseja realmente apagar essa mensagem?",
+                    "Aviso", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (resp == JOptionPane.YES_OPTION) {
+                this.mensagem.getSala().getMensagens_sala().remove(this.mensagem);
+                s.refresh();
+            }
         }
     }//GEN-LAST:event_btnapagarActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Resposta_mensagem rm = new Resposta_mensagem(s, true, this.mensagem);
+        rm.setVisible(true);
+        s.refresh();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        if (evt.getButton() == MouseEvent.BUTTON3) {
+            jPopupMenu1.show(this, evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_formMouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nome;
     private javax.swing.JButton btnapagar;
@@ -136,6 +169,14 @@ public class mensagens_panel extends javax.swing.JPanel {
     private javax.swing.JLabel imagem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JLabel publi;
     // End of variables declaration//GEN-END:variables
+
+    
+    public static String convertToMultiline(String orig) {
+        return "<html>" + orig.replaceAll("\n", "<br>")+"</html>";
+    }
+    
 }

@@ -472,11 +472,11 @@ public class Sala_Conversacao extends javax.swing.JFrame {
         table.revalidate();
     }
 
-    void refresh() {
+    void refresh() {        
+        Main.bd.Serializar();
         roomName.setText(sala_actual.getNome());
         roomMessage.setText(sala_actual.getDescricao_sala());
         atualizarMensagens();
-        Main.bd.Serializar();
         mostrarUtilizadores();
     }
 }
