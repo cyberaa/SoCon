@@ -336,6 +336,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
             Calendar c = Calendar.getInstance();
             Date actual = c.getTime();
             mensagem_actual.setData_criada(actual);
+            mensagem_actual.setEmissor(Main.atual);
             if (mensagem_actual.getDelay() > 0) {
                 MessageTimer mt = new MessageTimer(sala_actual, mensagem_actual);
                 JOptionPane.showMessageDialog(this, "A mensagem será publicada em "+mensagem_actual.getDelay()
