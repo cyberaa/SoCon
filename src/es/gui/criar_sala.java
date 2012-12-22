@@ -391,7 +391,7 @@ public class criar_sala extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Nome da sala ou descrição em branco", "Erro", JOptionPane.ERROR_MESSAGE);
             } else {
                 Sala s = new Sala(num, roomName.getText(), (Tema) jComboBox1.getSelectedItem(),
-                        txtDescricao.getText(), jSpinner1.getComponentCount(), perm);
+                        txtDescricao.getText(), (int) jSpinner1.getValue(), perm);
 
                 if(Main.bd.addSala(s)==1){
                     JOptionPane.showMessageDialog(this, "Sala adicionada com sucesso", "Aviso", JOptionPane.INFORMATION_MESSAGE);
