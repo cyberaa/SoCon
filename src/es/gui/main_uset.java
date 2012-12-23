@@ -24,6 +24,7 @@ public class main_uset extends javax.swing.JFrame {
      */
     public main_uset() {
         initComponents();
+        
     }
 
     /**
@@ -613,7 +614,6 @@ public class main_uset extends javax.swing.JFrame {
         Login log = new Login(this, true);
         log.setLocationRelativeTo(null);
         this.setVisible(false);
-        
         log.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -654,11 +654,13 @@ public class main_uset extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         RegistoTema rt = new RegistoTema(this);
+        rt.setLocationRelativeTo(null);
         rt.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         GerirSalas gs = new GerirSalas(this);
+        gs.setLocationRelativeTo(null);
         gs.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -670,6 +672,7 @@ public class main_uset extends javax.swing.JFrame {
         if (jList1.getSelectedIndex()>-1) {
             s = (Sala) jList1.getSelectedValue();
             Sala_Conversacao sc = new Sala_Conversacao(s);
+            sc.setLocationRelativeTo(null);
             sc.setVisible(true);
         }
     }//GEN-LAST:event_btnJoinActionPerformed

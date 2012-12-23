@@ -160,21 +160,33 @@ public class mensagens_panel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnapagarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Resposta_mensagem rm = new Resposta_mensagem(s, true, this.mensagem);
+        Resposta_mensagem rm = new Resposta_mensagem(s, true, this.mensagem, 1);
+        rm.setLocationRelativeTo(null);
         rm.setVisible(true);
         s.refresh();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
         if (evt.getButton() == MouseEvent.BUTTON3) {
+            if(this.mensagem.getEmissor().equals(Main.atual)){
+                jMenuItem2.setEnabled(true);
+            } else {
+                jMenuItem2.setEnabled(false);
+            }
             jPopupMenu1.show(this, evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_formMouseClicked
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+        if (this.mensagem.isResposta()) {
+            JOptionPane.showMessageDialog(this, "Não é possível editar mensagens com respostas");
+        } else {
+            Resposta_mensagem rm = new Resposta_mensagem(s, true, this.mensagem, 0);
+            rm.setLocationRelativeTo(null);
+            rm.setVisible(true);
+            s.refresh();
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Nome;
     private javax.swing.JButton btnapagar;
@@ -189,9 +201,7 @@ public class mensagens_panel extends javax.swing.JPanel {
     private javax.swing.JLabel publi;
     // End of variables declaration//GEN-END:variables
 
-    
     public static String convertToMultiline(String orig) {
-        return "<html>" + orig.replaceAll("\n", "<br>")+"</html>";
+        return "<html>" + orig.replaceAll("\n", "<br>") + "</html>";
     }
-    
 }

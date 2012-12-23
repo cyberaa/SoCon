@@ -35,6 +35,7 @@ public class Main {
      */
     public static void main(String args[]) {
         JFrame j = new main_uset();
+        j.setLocationRelativeTo(null);
         bd = new BaseDeDados();
         bd.testeBanco();
         j.setVisible(false);

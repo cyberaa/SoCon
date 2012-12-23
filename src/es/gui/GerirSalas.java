@@ -97,6 +97,7 @@ public class GerirSalas extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         criar_sala ns = new criar_sala(this);
+        ns.setLocationRelativeTo(null);
         ns.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -106,6 +107,7 @@ public class GerirSalas extends javax.swing.JDialog {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ApagarSala aps = new ApagarSala(this, true);
+        aps.setLocationRelativeTo(null);
         aps.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

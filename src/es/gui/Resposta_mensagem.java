@@ -14,13 +14,20 @@ import es.cli.MensagemSala;
 public class Resposta_mensagem extends javax.swing.JDialog {
 
     private MensagemSala msg;
+    private int type;
 
     /**
      * Creates new form Resposta_mensagem
      */
-    public Resposta_mensagem(java.awt.Frame parent, boolean modal, MensagemSala msg) {
+    public Resposta_mensagem(java.awt.Frame parent, boolean modal, MensagemSala msg, int type) {
         super(parent, modal);
         this.msg = msg;
+        this.type = type;
+        if (type == 1) {
+            this.setTitle("Adicionar resposta");
+        } else {
+            this.setTitle("Alterar Mensagem");
+        }
         initComponents();
     }
 
@@ -39,6 +46,7 @@ public class Resposta_mensagem extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Escrever Resposta");
         setResizable(false);
 
         jButton1.setText("OK");
@@ -85,16 +93,23 @@ public class Resposta_mensagem extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (!jTextArea1.getText().trim().isEmpty()) {
-            String text = msg.getTexto_mensagem();
-            text += "\n\n     Resposta de ";
-            text += Main.atual.getNome() + " " + Main.atual.getApelido() + ": ";
-            text += "<span style=\"color:red\">"+jTextArea1.getText() + "</span>";
+        if (type == 1) {
+            if (!jTextArea1.getText().trim().isEmpty()) {
+                String text = msg.getTexto_mensagem();
+                text += "\n\n     Resposta de ";
+                text += Main.atual.getNome() + " " + Main.atual.getApelido() + ": ";
+                text += "<span style=\"color:red\">" + jTextArea1.getText() + "</span>";
 
-            msg.setTexto_mensagem(text);
-            msg.setResposta(true);
+                msg.setTexto_mensagem(text);
+                msg.setResposta(true);
+            }
+            this.dispose();
+        }else{
+            if (!jTextArea1.getText().trim().isEmpty()) {
+                msg.setTexto_mensagem(jTextArea1.getText());
+            }
+            this.dispose();
         }
-        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -24,6 +24,7 @@ public class ApagarSala extends javax.swing.JDialog {
     public ApagarSala(JDialog j, boolean modal) {
         super(j, modal);
         initComponents();
+        
     }
 
     /**

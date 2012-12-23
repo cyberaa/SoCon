@@ -355,6 +355,7 @@ public class Sala_Conversacao extends javax.swing.JFrame {
 
     private void advanced_bttnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_advanced_bttnActionPerformed
         Upload_File_Delay upd = new Upload_File_Delay(this, mensagem_actual);
+        upd.setLocationRelativeTo(null);
         upd.setVisible(true);
     }//GEN-LAST:event_advanced_bttnActionPerformed
 
