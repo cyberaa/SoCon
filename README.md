@@ -1,5 +1,6 @@
 # SoCon
-Software Engineering Project - SE subject from the UC.
+<img src="https://img.shields.io/badge/license-CC%20BY--ND-yellow.svg" alt="license.svg">
+<p>Software Engineering Project - SE subject from the UC.</p>
 
 Description
 ----------------------
